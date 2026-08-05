@@ -10,6 +10,8 @@ import { Button } from "@/components/vb/Button";
 import { SectionTitle } from "@/components/vb/SectionTitle";
 import { Modal } from "@/components/vb/Modal";
 import { ContentSlider } from "@/components/vb/ContentSlider";
+import { useAuth } from "@/hooks/useAuth";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
 export const Route = createFileRoute("/projeto")({
   head: () => ({
@@ -60,6 +62,8 @@ const goals = [
 
 function Landing() {
   const [selected, setSelected] = useState<Topic | null>(null);
+  const { isAuthenticated } = useAuth();
+  const { openModal } = useAuthModal();
 
   return (
     <div className="min-h-dvh">
@@ -210,6 +214,54 @@ function Landing() {
               </motion.article>
             ))}
           </div>
+        </section>
+
+        <section id="assistente" className="mx-auto max-w-6xl px-5 pb-24 sm:pb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+            className="overflow-hidden rounded-[32px] bg-gradient-to-br from-primary via-primary-hover to-accent px-7 py-14 text-center shadow-lift sm:px-14"
+          >
+            <span className="mx-auto grid h-14 w-14 place-items-center rounded-3xl bg-primary-foreground/20 text-primary-foreground">
+              <Sparkles size={24} aria-hidden="true" />
+            </span>
+            <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-primary-foreground sm:text-4xl">
+              Converse com o Assistente IA do Viver Bem
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-primary-foreground/85 sm:text-base">
+              Tire dúvidas sobre ansiedade, autoestima, rotina e bem-estar em um
+              espaço acolhedor. Crie sua conta gratuita para começar.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              {isAuthenticated ? (
+                <Link to="/assistente">
+                  <Button size="lg" variant="outline">
+                    Abrir assistente
+                  </Button>
+                </Link>
+              ) : (
+                <>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={() => openModal("signup")}
+                  >
+                    Criar conta gratuita
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="ghost"
+                    className="text-primary-foreground hover:bg-primary-foreground/15 hover:text-primary-foreground"
+                    onClick={() => openModal("login")}
+                  >
+                    Já tenho conta
+                  </Button>
+                </>
+              )}
+            </div>
+          </motion.div>
         </section>
       </main>
 

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, Sparkles, X } from "lucide-react";
 import { Button } from "./Button";
+import { useAuth } from "@/hooks/useAuth";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
 const items = [
   { label: "Início", href: "#inicio" },
@@ -14,6 +16,8 @@ const items = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
+  const { openModal } = useAuthModal();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -53,9 +57,21 @@ export function Navbar() {
         </ul>
 
         <div className="flex shrink-0 items-center gap-2">
-          <Link to="/" search={{ reset: 1 }} className="hidden lg:block">
-            <Button size="sm">Começar novamente</Button>
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/assistente" className="hidden lg:block">
+              <Button size="sm">
+                <Sparkles size={15} /> Assistente IA
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              size="sm"
+              className="hidden lg:inline-flex"
+              onClick={() => openModal("login")}
+            >
+              Entrar
+            </Button>
+          )}
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
@@ -83,8 +99,28 @@ export function Navbar() {
               </li>
             ))}
             <li className="pt-2">
-              <Link to="/" search={{ reset: 1 }}>
-                <Button size="sm" className="w-full">
+              {isAuthenticated ? (
+                <Link to="/assistente" onClick={() => setOpen(false)}>
+                  <Button size="sm" className="w-full">
+                    <Sparkles size={15} /> Assistente IA
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  size="sm"
+                  className="w-full"
+                  onClick={() => {
+                    setOpen(false);
+                    openModal("login");
+                  }}
+                >
+                  Entrar
+                </Button>
+              )}
+            </li>
+            <li className="pt-2">
+              <Link to="/" search={{ reset: 1 }} onClick={() => setOpen(false)}>
+                <Button size="sm" variant="outline" className="w-full">
                   Começar novamente
                 </Button>
               </Link>
