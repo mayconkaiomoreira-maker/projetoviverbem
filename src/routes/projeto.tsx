@@ -60,6 +60,8 @@ const goals = [
 
 function Landing() {
   const [selected, setSelected] = useState<Topic | null>(null);
+  const { isAuthenticated } = useAuth();
+  const { openModal } = useAuthModal();
 
   return (
     <div className="min-h-dvh">
