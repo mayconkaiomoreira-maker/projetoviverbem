@@ -10,6 +10,8 @@ import { Button } from "@/components/vb/Button";
 import { SectionTitle } from "@/components/vb/SectionTitle";
 import { Modal } from "@/components/vb/Modal";
 import { ContentSlider } from "@/components/vb/ContentSlider";
+import { useAuth } from "@/hooks/useAuth";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
 export const Route = createFileRoute("/projeto")({
   head: () => ({
