@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as ProjetoRouteImport } from './routes/projeto'
+import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as AuthenticatedAssistenteIndexRouteImport } from './routes/_authenticated/assistente.index'
 import { Route as AuthenticatedAssistenteIdRouteImport } from './routes/_authenticated/assistente.$id'
@@ -29,6 +30,11 @@ const ProjetoRoute = ProjetoRouteImport.update({
   id: '/projeto',
   path: '/projeto',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
@@ -51,6 +57,7 @@ const AuthenticatedAssistenteIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/projeto': typeof ProjetoRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
   '/api/chat': typeof ApiChatRoute
   '/assistente/$id': typeof AuthenticatedAssistenteIdRoute
   '/assistente/': typeof AuthenticatedAssistenteIndexRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/projeto': typeof ProjetoRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
   '/api/chat': typeof ApiChatRoute
   '/assistente/$id': typeof AuthenticatedAssistenteIdRoute
   '/assistente': typeof AuthenticatedAssistenteIndexRoute
@@ -67,20 +75,34 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/projeto': typeof ProjetoRoute
+  '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
   '/api/chat': typeof ApiChatRoute
   '/_authenticated/assistente/$id': typeof AuthenticatedAssistenteIdRoute
   '/_authenticated/assistente/': typeof AuthenticatedAssistenteIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projeto' | '/api/chat' | '/assistente/$id' | '/assistente/'
+  fullPaths:
+    | '/'
+    | '/projeto'
+    | '/perfil'
+    | '/api/chat'
+    | '/assistente/$id'
+    | '/assistente/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projeto' | '/api/chat' | '/assistente/$id' | '/assistente'
+  to:
+    | '/'
+    | '/projeto'
+    | '/perfil'
+    | '/api/chat'
+    | '/assistente/$id'
+    | '/assistente'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/projeto'
+    | '/_authenticated/perfil'
     | '/api/chat'
     | '/_authenticated/assistente/$id'
     | '/_authenticated/assistente/'
@@ -116,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjetoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/perfil': {
+      id: '/_authenticated/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof AuthenticatedPerfilRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/api/chat': {
       id: '/api/chat'
       path: '/api/chat'
@@ -141,11 +170,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
   AuthenticatedAssistenteIdRoute: typeof AuthenticatedAssistenteIdRoute
   AuthenticatedAssistenteIndexRoute: typeof AuthenticatedAssistenteIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
   AuthenticatedAssistenteIdRoute: AuthenticatedAssistenteIdRoute,
   AuthenticatedAssistenteIndexRoute: AuthenticatedAssistenteIndexRoute,
 }
