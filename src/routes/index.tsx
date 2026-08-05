@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
     ],
   }),
   validateSearch: (search: Record<string, unknown>) => ({
-    reset: search.reset ? 1 : undefined,
+    reset: search["reset"] ? 1 : undefined,
   }),
   component: Experiencia,
 });
