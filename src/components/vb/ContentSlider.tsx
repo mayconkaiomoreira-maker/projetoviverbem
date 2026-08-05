@@ -22,8 +22,8 @@ export function ContentSlider({ topic }: { topic: Topic }) {
         >
           <ChevronLeft size={20} />
         </button>
-        <p className="min-w-0 truncate text-center text-sm font-semibold text-primary">
-          {labels[page]}
+        <p className="min-w-0 truncate text-center text-xs font-medium text-muted-foreground">
+          {page + 1} / {labels.length}
         </p>
         <button
           type="button"
