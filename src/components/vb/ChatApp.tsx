@@ -66,7 +66,10 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
       .eq("conversation_id", conversationId)
       .order("created_at", { ascending: true })
       .then(({ data }) => {
-        if (active) setMessages((data as Message[]) ?? []);
+        if (!active) return;
+        const loaded = (data as Message[]) ?? [];
+        // Não sobrescreve mensagens já enviadas enquanto o histórico carregava.
+        setMessages((prev) => (prev.length > 0 ? prev : loaded));
       });
     inputRef.current?.focus();
     return () => {
