@@ -53,9 +53,21 @@ export function Navbar() {
         </ul>
 
         <div className="flex shrink-0 items-center gap-2">
-          <Link to="/" search={{ reset: 1 }} className="hidden lg:block">
-            <Button size="sm">Começar novamente</Button>
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/assistente" className="hidden lg:block">
+              <Button size="sm">
+                <Sparkles size={15} /> Assistente IA
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              size="sm"
+              className="hidden lg:inline-flex"
+              onClick={() => openModal("login")}
+            >
+              Entrar
+            </Button>
+          )}
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
