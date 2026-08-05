@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, Sparkles, X } from "lucide-react";
 import { Button } from "./Button";
+import { useAuth } from "@/hooks/useAuth";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
 const items = [
   { label: "Início", href: "#inicio" },
@@ -14,6 +16,8 @@ const items = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
+  const { openModal } = useAuthModal();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
