@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AuthProvider } from "@/hooks/useAuth";
+import { AuthModalProvider } from "@/hooks/useAuthModal";
+import { AuthModal } from "@/components/vb/AuthModal";
 
 function NotFoundComponent() {
   return (
