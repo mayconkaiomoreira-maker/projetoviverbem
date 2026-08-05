@@ -99,8 +99,28 @@ export function Navbar() {
               </li>
             ))}
             <li className="pt-2">
-              <Link to="/" search={{ reset: 1 }}>
-                <Button size="sm" className="w-full">
+              {isAuthenticated ? (
+                <Link to="/assistente" onClick={() => setOpen(false)}>
+                  <Button size="sm" className="w-full">
+                    <Sparkles size={15} /> Assistente IA
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  size="sm"
+                  className="w-full"
+                  onClick={() => {
+                    setOpen(false);
+                    openModal("login");
+                  }}
+                >
+                  Entrar
+                </Button>
+              )}
+            </li>
+            <li className="pt-2">
+              <Link to="/" search={{ reset: 1 }} onClick={() => setOpen(false)}>
+                <Button size="sm" variant="outline" className="w-full">
                   Começar novamente
                 </Button>
               </Link>
