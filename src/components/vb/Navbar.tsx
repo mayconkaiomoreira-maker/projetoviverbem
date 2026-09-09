@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { motion } from "motion/react";
 import { Menu, Sparkles, X } from "lucide-react";
 import { Button } from "./Button";
 import { useAuth } from "@/hooks/useAuth";
@@ -16,6 +17,7 @@ const items = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
   const { isAuthenticated } = useAuth();
   const { openModal } = useAuthModal();
 
@@ -27,14 +29,14 @@ export function Navbar() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-in-out ${
-        scrolled ? "glass border-b border-border" : "bg-transparent"
-      }`}
-    >
-      <nav
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+      <motion.nav
         aria-label="Navegação principal"
-        className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3 lg:flex lg:justify-between"
+        animate={{ scale: scrolled ? 0.985 : 1 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className={`mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-full px-4 py-2.5 transition-shadow duration-500 ease-in-out sm:px-5 lg:flex lg:justify-between ${
+          scrolled ? "glass gradient-border shadow-soft" : "bg-transparent"
+        }`}
       >
         <a
           href="#inicio"
@@ -43,15 +45,27 @@ export function Navbar() {
           Projeto Viver Bem
         </a>
 
-        <ul className="hidden items-center gap-7 lg:flex">
+        <ul
+          className="hidden items-center gap-1 lg:flex"
+          onMouseLeave={() => setHovered(null)}
+        >
           {items.map((i) => (
-            <li key={i.href}>
+            <li key={i.href} className="relative">
               <a
                 href={i.href}
-                className="text-sm text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground"
+                onMouseEnter={() => setHovered(i.href)}
+                className="relative z-10 block rounded-full px-3.5 py-2 text-sm text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground"
               >
                 {i.label}
               </a>
+              {hovered === i.href && (
+                <motion.span
+                  layoutId="nav-pill"
+                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  className="absolute inset-0 rounded-full bg-accent"
+                  aria-hidden="true"
+                />
+              )}
             </li>
           ))}
         </ul>
@@ -77,22 +91,27 @@ export function Navbar() {
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
-            className="tap grid h-11 w-11 place-items-center rounded-full bg-muted text-foreground lg:hidden"
+            className="tap glass grid h-11 w-11 place-items-center rounded-full text-foreground lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       {open && (
-        <div className="glass border-t border-border lg:hidden">
-          <ul className="mx-auto max-w-6xl px-5 py-4">
+        <motion.div
+          initial={{ opacity: 0, y: -8, filter: "blur(6px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          className="glass gradient-border mx-auto mt-2 max-w-6xl rounded-[28px] shadow-lift lg:hidden"
+        >
+          <ul className="px-4 py-3">
             {items.map((i) => (
               <li key={i.href}>
                 <a
                   href={i.href}
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-[15px] text-foreground"
+                  className="block rounded-2xl px-3 py-3 text-[15px] text-foreground transition-colors duration-300 hover:bg-accent"
                 >
                   {i.label}
                 </a>
@@ -126,7 +145,7 @@ export function Navbar() {
               </Link>
             </li>
           </ul>
-        </div>
+        </motion.div>
       )}
     </header>
   );
