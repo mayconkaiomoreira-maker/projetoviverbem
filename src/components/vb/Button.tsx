@@ -1,20 +1,23 @@
 import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "ghost" | "outline";
+type Variant = "primary" | "ghost" | "outline" | "glass";
 type Size = "sm" | "md" | "lg";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
+  /** Desliga o brilho animado do botão primário. */
+  plain?: boolean;
 }
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-primary text-primary-foreground hover:bg-primary-hover shadow-soft",
+    "bg-[image:var(--gradient-primary)] text-primary-foreground glow hover:brightness-[1.06]",
   ghost: "text-muted-foreground hover:text-foreground hover:bg-muted",
   outline:
-    "border border-border bg-card text-foreground hover:border-primary hover:text-primary",
+    "gradient-border glass text-foreground hover:text-primary hover:shadow-soft",
+  glass: "glass text-foreground shadow-soft hover:shadow-lift",
 };
 
 const sizes: Record<Size, string> = {
@@ -26,14 +29,16 @@ const sizes: Record<Size, string> = {
 export function Button({
   variant = "primary",
   size = "md",
+  plain = false,
   className,
   ...props
 }: Props) {
   return (
     <button
       className={cn(
-        "tap inline-flex select-none items-center justify-center gap-2 rounded-full font-medium disabled:pointer-events-none disabled:opacity-50",
+        "tap relative isolate inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-full font-medium disabled:pointer-events-none disabled:opacity-50",
         variants[variant],
+        variant === "primary" && !plain && "shimmer",
         sizes[size],
         className,
       )}
