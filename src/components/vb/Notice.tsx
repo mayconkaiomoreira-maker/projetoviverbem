@@ -12,13 +12,13 @@ const config: Record<Tone, { icon: typeof Info; ring: string; color: string }> =
   },
   warning: {
     icon: TriangleAlert,
-    ring: "border-[oklch(0.78_0.15_75)]/40",
-    color: "text-[oklch(0.62_0.15_60)]",
+    ring: "border-warning/40",
+    color: "text-warning",
   },
   success: {
     icon: ShieldCheck,
-    ring: "border-[oklch(0.75_0.13_160)]/40",
-    color: "text-[oklch(0.55_0.12_165)]",
+    ring: "border-success/40",
+    color: "text-success",
   },
 };
 

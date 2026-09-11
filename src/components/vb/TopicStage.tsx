@@ -4,6 +4,7 @@ import type { Topic } from "@/data/topics";
 import { Button } from "./Button";
 import { ContentSlider } from "./ContentSlider";
 import { ProgressBar } from "./ProgressBar";
+import { Tag } from "./Tag";
 
 export function TopicStage({
   topic,
@@ -24,11 +25,12 @@ export function TopicStage({
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-16 sm:py-20">
+      <Tag tone="gradient">Tema {index + 1} de {total}</Tag>
       <motion.h1
         initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.7, ease: "easeInOut" }}
-        className="text-center text-4xl font-semibold tracking-tight sm:text-6xl"
+        className="mt-5 text-center text-4xl font-semibold sm:text-6xl"
       >
         {topic.title}
       </motion.h1>
@@ -49,7 +51,7 @@ export function TopicStage({
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.7, ease: "easeInOut" }}
-        className="mt-10 w-full max-w-2xl overflow-hidden rounded-[28px] bg-card shadow-soft"
+        className="surface gradient-border card-lift mt-10 w-full max-w-2xl overflow-hidden rounded-[28px]"
       >
         <img
           src={topic.image}

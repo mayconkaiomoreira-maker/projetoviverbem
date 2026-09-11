@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Topic } from "@/data/topics";
+import { Tag } from "./Tag";
 
 const labels = ["O que é?", "Sintomas", "Como lidar"];
 
@@ -12,7 +13,7 @@ export function ContentSlider({ topic }: { topic: Topic }) {
     setPage((p) => (p + dir + labels.length) % labels.length);
 
   return (
-    <div className="rounded-[28px] bg-card p-6 shadow-lift sm:p-9">
+    <div className="glass gradient-border rounded-[28px] p-6 shadow-lift sm:p-9">
       <div className="flex items-center justify-between gap-4">
         <button
           type="button"
@@ -45,9 +46,8 @@ export function ContentSlider({ topic }: { topic: Topic }) {
             transition={{ duration: 0.45, ease: "easeInOut" }}
             aria-live="polite"
           >
-            <h3 className="text-2xl font-semibold tracking-tight">
-              {labels[page]}
-            </h3>
+            <Tag tone="gradient">{labels[page]}</Tag>
+            <h3 className="mt-4 text-2xl font-semibold">{topic.title}</h3>
 
             {page === 0 && (
               <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
@@ -81,7 +81,7 @@ export function ContentSlider({ topic }: { topic: Topic }) {
                   {topic.tips.map((t) => (
                     <li
                       key={t}
-                      className="rounded-full bg-accent px-4 py-2 text-sm text-accent-foreground"
+                      className="gradient-border glass rounded-full px-4 py-2 text-sm text-accent-foreground"
                     >
                       {t}
                     </li>

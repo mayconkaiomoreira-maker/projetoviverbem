@@ -2,10 +2,10 @@ import { Instagram, Mail, Youtube } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer id="contato" className="border-t border-border bg-card">
+    <footer id="contato" className="glass border-t border-border">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-3">
         <div>
-          <p className="text-[15px] font-semibold">Projeto Viver Bem</p>
+          <p className="text-[15px] font-semibold text-primary">Projeto Viver Bem</p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Conscientização sobre saúde mental, autoestima e qualidade de vida
             para estudantes e jovens.
@@ -57,7 +57,7 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram do Projeto Viver Bem"
-              className="tap grid h-11 w-11 place-items-center rounded-full bg-muted text-muted-foreground hover:text-primary"
+              className="tap gradient-border glass grid h-11 w-11 place-items-center rounded-full text-muted-foreground hover:text-primary"
             >
               <Instagram size={18} />
             </a>
@@ -66,14 +66,14 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label="YouTube do Projeto Viver Bem"
-              className="tap grid h-11 w-11 place-items-center rounded-full bg-muted text-muted-foreground hover:text-primary"
+              className="tap gradient-border glass grid h-11 w-11 place-items-center rounded-full text-muted-foreground hover:text-primary"
             >
               <Youtube size={18} />
             </a>
             <a
               href="mailto:contato@projetoviverbem.org"
               aria-label="Enviar e-mail"
-              className="tap grid h-11 w-11 place-items-center rounded-full bg-muted text-muted-foreground hover:text-primary"
+              className="tap gradient-border glass grid h-11 w-11 place-items-center rounded-full text-muted-foreground hover:text-primary"
             >
               <Mail size={18} />
             </a>

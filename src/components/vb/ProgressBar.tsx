@@ -13,7 +13,7 @@ export function ProgressBar({
   return (
     <div className="w-full max-w-xs">
       <div
-        className="h-1.5 w-full overflow-hidden rounded-full bg-muted"
+        className="surface h-2 w-full overflow-hidden rounded-full"
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={total}
@@ -21,7 +21,7 @@ export function ProgressBar({
         aria-label={label ?? "Progresso da experiência"}
       >
         <motion.div
-          className="h-full rounded-full bg-primary"
+          className="h-full rounded-full bg-[image:var(--gradient-primary)] shadow-[var(--shadow-glow)]"
           initial={false}
           animate={{ width: `${pct}%` }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
