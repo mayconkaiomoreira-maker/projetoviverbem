@@ -42,7 +42,7 @@ export function Modal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.98 }}
             transition={{ duration: 0.45, ease: "easeInOut" }}
-            className="relative max-h-[88vh] w-full max-w-xl overflow-y-auto rounded-t-[28px] bg-background p-4 sm:rounded-[28px] sm:p-5"
+            className="glass gradient-border relative max-h-[88vh] w-full max-w-xl overflow-y-auto rounded-t-[28px] p-4 shadow-lift sm:rounded-[28px] sm:p-5"
           >
             <div className="mb-3 flex items-center justify-between gap-4">
               <h2 className="min-w-0 truncate text-lg font-semibold">{title}</h2>

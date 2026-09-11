@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { useNavigate } from "@tanstack/react-router";
 import { Loader2, Lock, Mail, User as UserIcon, X } from "lucide-react";
 import { Button } from "./Button";
+import { Tag } from "./Tag";
+import { Notice } from "./Notice";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthModal } from "@/hooks/useAuthModal";
 
@@ -124,7 +126,7 @@ export function AuthModal() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.97 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="relative flex h-full max-h-full w-full flex-col overflow-hidden bg-background shadow-lift sm:h-auto sm:max-h-[88vh] sm:w-[75vw] sm:max-w-5xl sm:flex-row sm:rounded-[32px]"
+            className="glass gradient-border relative flex h-full max-h-full w-full flex-col overflow-hidden shadow-lift sm:h-auto sm:max-h-[88vh] sm:w-[75vw] sm:max-w-5xl sm:flex-row sm:rounded-[32px]"
           >
             <button
               type="button"
@@ -136,7 +138,8 @@ export function AuthModal() {
             </button>
 
             {/* Lado esquerdo — 40% */}
-            <div className="relative hidden flex-col justify-center gap-4 bg-gradient-to-br from-primary via-primary-hover to-accent p-12 sm:flex sm:w-2/5">
+            <div className="relative hidden flex-col justify-center gap-4 bg-[image:var(--gradient-primary)] p-12 sm:flex sm:w-2/5">
+              <Tag className="self-start border-primary-foreground/25 text-primary-foreground">Projeto Viver Bem</Tag>
               <p className="text-3xl font-semibold leading-tight tracking-tight text-primary-foreground">
                 Cuidar da sua <RotatingWord /> pode transformar sua vida.
               </p>
@@ -147,7 +150,7 @@ export function AuthModal() {
 
             {/* Lado direito — 60% */}
             <div className="flex flex-1 items-center justify-center overflow-y-auto bg-muted/40 p-6 sm:w-3/5 sm:p-10">
-              <div className="w-full max-w-md rounded-[28px] border border-border/70 bg-card/70 p-6 shadow-soft backdrop-blur-xl sm:p-8">
+              <div className="gradient-border glass w-full max-w-md rounded-[28px] p-6 shadow-soft sm:p-8">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.form
                     key={mode}
@@ -249,11 +252,7 @@ export function AuthModal() {
                       </>
                     )}
 
-                    {error && (
-                      <p className="rounded-2xl bg-destructive/10 px-4 py-3 text-sm text-destructive">
-                        {error}
-                      </p>
-                    )}
+                    {error && <Notice tone="warning">{error}</Notice>}
 
                     <Button type="submit" className="w-full" disabled={busy}>
                       {busy ? (

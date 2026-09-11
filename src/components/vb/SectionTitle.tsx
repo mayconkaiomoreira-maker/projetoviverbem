@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Tag } from "./Tag";
 
 export function SectionTitle({
   eyebrow,
@@ -20,11 +21,9 @@ export function SectionTitle({
       className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}
     >
       {eyebrow && (
-        <p className="text-sm font-semibold tracking-wide text-primary">
-          {eyebrow}
-        </p>
+        <Tag tone="gradient">{eyebrow}</Tag>
       )}
-      <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
         {title}
       </h2>
       {description && (

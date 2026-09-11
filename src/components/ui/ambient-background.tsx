@@ -17,12 +17,12 @@ export function AmbientBackground() {
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute right-[-12%] top-[12%] h-[46vmax] w-[46vmax] rounded-full bg-[oklch(0.78_0.12_330)]/25 blur-[120px]"
+        className="absolute right-[-12%] top-[12%] h-[46vmax] w-[46vmax] rounded-full bg-ambient-rose/25 blur-[120px]"
         animate={{ x: [0, -50, 30, 0], y: [0, 70, 20, 0], scale: [1, 1.1, 0.95, 1] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-[-15%] left-[25%] h-[50vmax] w-[50vmax] rounded-full bg-[oklch(0.82_0.11_190)]/30 blur-[130px]"
+        className="absolute bottom-[-15%] left-[25%] h-[50vmax] w-[50vmax] rounded-full bg-ambient-mint/30 blur-[130px]"
         animate={{ x: [0, 40, -40, 0], y: [0, -50, -10, 0], scale: [1, 1.18, 1.02, 1] }}
         transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
       />
