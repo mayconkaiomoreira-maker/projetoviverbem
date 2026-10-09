@@ -16,6 +16,8 @@ import { useAuthModal } from "@/hooks/useAuthModal";
 export const Route = createFileRoute("/projeto")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Projeto Viver Bem — Cuidar da mente é cuidar do futuro" },
       {
         name: "description",
@@ -74,7 +76,7 @@ function Landing() {
           <motion.div
             initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
           >
             <p className="text-sm font-semibold tracking-wide text-primary">
               Projeto Viver Bem
@@ -101,8 +103,8 @@ function Landing() {
           <motion.div
             initial={{ opacity: 0, scale: 0.97, filter: "blur(10px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="overflow-hidden rounded-[28px] bg-card shadow-lift"
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="overflow-hidden rounded-xl bg-card shadow-lift"
           >
             <img
               src={heroImg}
@@ -127,10 +129,10 @@ function Landing() {
                 initial={{ opacity: 0, y: 28, filter: "blur(6px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeInOut" }}
-                className="tap rounded-[28px] bg-card p-7 shadow-soft hover:shadow-lift"
+                transition={{ duration: 0.2, delay: i * 0.1, ease: "easeInOut" }}
+                className="tap rounded-xl bg-card p-7 shadow-soft hover:shadow-lift"
               >
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-primary">
+                <span className="grid h-12 w-12 place-items-center rounded-lg bg-accent text-primary">
                   <a.icon size={22} aria-hidden="true" />
                 </span>
                 <h3 className="mt-5 text-xl font-semibold tracking-tight">
@@ -157,8 +159,8 @@ function Landing() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: "easeInOut" }}
-                className="flex items-start gap-4 rounded-3xl bg-card px-6 py-5 shadow-soft"
+                transition={{ duration: 0.2, delay: i * 0.05, ease: "easeInOut" }}
+                className="flex items-start gap-4 rounded-xl bg-card px-6 py-5 shadow-soft"
               >
                 <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
                   {i + 1}
@@ -184,8 +186,8 @@ function Landing() {
                 initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: (i % 3) * 0.1, ease: "easeInOut" }}
-                className="tap flex flex-col overflow-hidden rounded-[28px] bg-card shadow-soft hover:shadow-lift"
+                transition={{ duration: 0.2, delay: (i % 3) * 0.1, ease: "easeInOut" }}
+                className="tap flex flex-col overflow-hidden rounded-xl bg-card shadow-soft hover:shadow-lift"
               >
                 <img
                   src={t.image}
@@ -221,10 +223,10 @@ function Landing() {
             initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="overflow-hidden rounded-[32px] bg-gradient-to-br from-primary via-primary-hover to-accent px-7 py-14 text-center shadow-lift sm:px-14"
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="overflow-hidden rounded-xl bg-gradient-to-br from-primary via-primary-hover to-accent px-7 py-14 text-center shadow-lift sm:px-14"
           >
-            <span className="mx-auto grid h-14 w-14 place-items-center rounded-3xl bg-primary-foreground/20 text-primary-foreground">
+            <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-primary-foreground/20 text-primary-foreground">
               <Sparkles size={24} aria-hidden="true" />
             </span>
             <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-primary-foreground sm:text-4xl">

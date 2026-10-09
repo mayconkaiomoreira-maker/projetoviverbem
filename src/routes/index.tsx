@@ -8,6 +8,8 @@ import { TopicStage } from "@/components/vb/TopicStage";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Projeto Viver Bem — Saúde mental para estudantes" },
       {
         name: "description",
@@ -69,7 +71,7 @@ function Experiencia() {
             initial={{ opacity: 0, filter: "blur(10px)", scale: 0.98 }}
             animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
             exit={{ opacity: 0, filter: "blur(10px)", scale: 1.01 }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
             className="flex min-h-dvh flex-col items-center justify-center px-6 text-center"
           >
             <p className="text-sm font-semibold tracking-wide text-primary">
@@ -99,7 +101,7 @@ function Experiencia() {
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, filter: "blur(10px)" }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
             className="flex min-h-dvh flex-col items-center justify-center px-6"
           >
             <h1 className="text-center text-3xl font-semibold tracking-tight sm:text-5xl">
@@ -115,8 +117,8 @@ function Experiencia() {
                       ? { opacity: 1, y: 0, filter: "blur(0px)" }
                       : {}
                   }
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="flex items-center gap-3 rounded-2xl bg-card px-5 py-4 text-[15px] shadow-soft sm:text-base"
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                  className="flex items-center gap-3 rounded-lg bg-card px-5 py-4 text-[15px] shadow-soft sm:text-base"
                 >
                   <span
                     aria-hidden="true"
@@ -132,7 +134,7 @@ function Experiencia() {
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
                   className="mt-10 flex flex-wrap items-center justify-center gap-3"
                 >
                   <Button size="lg" onClick={() => setStep(2)}>
@@ -153,7 +155,7 @@ function Experiencia() {
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, filter: "blur(10px)" }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
           >
             <TopicStage
               topic={topics[topicIndex]}

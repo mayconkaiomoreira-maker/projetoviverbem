@@ -33,8 +33,8 @@ export function Navbar() {
       <motion.nav
         aria-label="Navegação principal"
         animate={{ scale: scrolled ? 0.985 : 1 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        className={`mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-full px-4 py-2.5 transition-shadow duration-500 ease-in-out sm:px-5 lg:flex lg:justify-between ${
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+        className={`mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-full px-4 py-2.5 transition-shadow duration-200 ease-in-out sm:px-5 lg:flex lg:justify-between ${
           scrolled ? "glass gradient-border shadow-soft" : "bg-transparent"
         }`}
       >
@@ -54,7 +54,7 @@ export function Navbar() {
               <a
                 href={i.href}
                 onMouseEnter={() => setHovered(i.href)}
-                className="relative z-10 block rounded-full px-3.5 py-2 text-sm text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground"
+                className="relative z-10 block rounded-full px-3.5 py-2 text-sm text-muted-foreground transition-colors duration-200 ease-in-out hover:text-foreground"
               >
                 {i.label}
               </a>
@@ -102,8 +102,8 @@ export function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -8, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="glass gradient-border mx-auto mt-2 max-w-6xl rounded-[28px] shadow-lift lg:hidden"
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+          className="glass gradient-border mx-auto mt-2 max-w-6xl rounded-xl shadow-lift lg:hidden"
         >
           <ul className="px-4 py-3">
             {items.map((i) => (
@@ -111,7 +111,7 @@ export function Navbar() {
                 <a
                   href={i.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-2xl px-3 py-3 text-[15px] text-foreground transition-colors duration-300 hover:bg-accent"
+                  className="block rounded-lg px-3 py-3 text-[15px] text-foreground transition-colors duration-200 hover:bg-accent"
                 >
                   {i.label}
                 </a>

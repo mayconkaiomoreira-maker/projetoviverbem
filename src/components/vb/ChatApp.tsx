@@ -214,7 +214,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
       <AnimatePresence>
         {sidebar && (
           <motion.div
-            className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-foreground/20  lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -224,7 +224,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
       </AnimatePresence>
 
       <aside
-        className={`glass fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-border transition-transform duration-500 ease-in-out lg:static lg:translate-x-0 ${
+        className={`glass fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-border transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${
           sidebar ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -264,7 +264,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
           {conversations.map((c) => (
             <div
               key={c.id}
-              className={`group flex items-center gap-1 rounded-2xl pr-1 transition-colors duration-300 ease-in-out ${
+              className={`group flex items-center gap-1 rounded-lg pr-1 transition-colors duration-200 ease-in-out ${
                 c.id === conversationId ? "bg-accent" : "hover:bg-muted"
               }`}
             >
@@ -292,7 +292,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
         <div className="border-t border-border p-3">
           <Link
             to="/perfil"
-            className="tap flex items-center gap-3 rounded-2xl px-3 py-3 hover:bg-muted"
+            className="tap flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-muted"
           >
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
               {name.charAt(0).toUpperCase()}
@@ -306,7 +306,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
               await signOut();
               void navigate({ to: "/projeto" });
             }}
-            className="tap mt-1 flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+            className="tap mt-1 flex w-full items-center gap-3 rounded-lg px-3 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
           >
             <LogOut size={15} /> Sair
           </button>
@@ -340,10 +340,10 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
               <motion.div
                 initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
                 className="pt-10 text-center"
               >
-                <span className="mx-auto grid h-14 w-14 place-items-center rounded-3xl bg-accent text-primary">
+                <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-accent text-primary">
                   <Sparkles size={24} />
                 </span>
                 <h1 className="mt-6 text-3xl font-semibold tracking-tight">
@@ -359,7 +359,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
                       key={s}
                       type="button"
                       onClick={() => send(s)}
-                      className="tap rounded-3xl bg-card px-5 py-4 text-left text-[15px] shadow-soft hover:shadow-lift"
+                      className="tap rounded-xl bg-card px-5 py-4 text-left text-[15px] shadow-soft hover:shadow-lift"
                     >
                       {s}
                     </button>
@@ -375,14 +375,14 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
             {streaming !== null && <Bubble role="assistant" content={streaming} />}
 
             {pending && (
-              <div className="flex items-center gap-2 rounded-3xl bg-card px-5 py-4 text-muted-foreground shadow-soft self-start">
+              <div className="flex items-center gap-2 rounded-xl bg-card px-5 py-4 text-muted-foreground shadow-soft self-start">
                 <Loader2 size={16} className="animate-spin" />
                 <span className="text-sm">Pensando...</span>
               </div>
             )}
 
             {error && (
-              <p className="self-center rounded-2xl bg-destructive/10 px-4 py-3 text-sm text-destructive">
+              <p className="self-center rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">
                 {error}
               </p>
             )}
@@ -391,13 +391,13 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
           </div>
         </div>
 
-        <div className="border-t border-border bg-background/80 px-4 py-4 backdrop-blur-xl lg:px-8">
+        <div className="border-t border-border bg-background/80 px-4 py-4  lg:px-8">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               void send(input);
             }}
-            className="mx-auto flex max-w-3xl items-end gap-2 rounded-[28px] bg-card p-2 shadow-soft"
+            className="mx-auto flex max-w-3xl items-end gap-2 rounded-xl bg-card p-2 shadow-soft"
           >
             <textarea
               ref={inputRef}
@@ -438,8 +438,8 @@ function Bubble({ role, content }: { role: "user" | "assistant"; content: string
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      className={`max-w-[85%] rounded-[26px] px-5 py-4 text-[15px] leading-relaxed shadow-soft ${
+      transition={{ duration: 0.2, ease: "easeInOut" }}
+      className={`max-w-[85%] rounded-xl px-5 py-4 text-[15px] leading-relaxed shadow-soft ${
         isUser
           ? "self-end bg-primary text-primary-foreground"
           : "self-start bg-card text-foreground"

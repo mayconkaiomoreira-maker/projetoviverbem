@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Presentation architecture
+- Keep semantic design tokens and compatibility surface utilities in src/styles.css; shared controls consume them so all screens remain visually consistent.
+- Use TopicArtwork for topic illustrations and the shared student marks asset for introductory screens; presentation must stay independent of topic content and authentication logic.

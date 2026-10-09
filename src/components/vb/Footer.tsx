@@ -16,23 +16,23 @@ export function Footer() {
           <p className="text-sm font-semibold">Links úteis</p>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>
-              <a className="transition-colors duration-300 hover:text-primary" href="#sobre">
+              <a className="transition-colors duration-200 hover:text-primary" href="#sobre">
                 Sobre o projeto
               </a>
             </li>
             <li>
-              <a className="transition-colors duration-300 hover:text-primary" href="#temas">
+              <a className="transition-colors duration-200 hover:text-primary" href="#temas">
                 Temas
               </a>
             </li>
             <li>
-              <a className="transition-colors duration-300 hover:text-primary" href="#objetivos">
+              <a className="transition-colors duration-200 hover:text-primary" href="#objetivos">
                 Objetivos
               </a>
             </li>
             <li>
               <a
-                className="transition-colors duration-300 hover:text-primary"
+                className="transition-colors duration-200 hover:text-primary"
                 href="https://www.cvv.org.br"
                 target="_blank"
                 rel="noreferrer"
@@ -47,7 +47,7 @@ export function Footer() {
           <p className="text-sm font-semibold">Contato</p>
           <a
             href="mailto:contato@projetoviverbem.org"
-            className="mt-3 inline-block text-sm text-muted-foreground transition-colors duration-300 hover:text-primary"
+            className="mt-3 inline-block text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
           >
             contato@projetoviverbem.org
           </a>

@@ -24,7 +24,7 @@ export function ProgressBar({
           className="h-full rounded-full bg-[image:var(--gradient-primary)] shadow-[var(--shadow-glow)]"
           initial={false}
           animate={{ width: `${pct}%` }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
         />
       </div>
       <p className="mt-2 text-center text-xs text-muted-foreground">

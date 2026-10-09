@@ -29,7 +29,7 @@ export function TopicStage({
       <motion.h1
         initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
         className="mt-5 text-center text-4xl font-semibold sm:text-6xl"
       >
         {topic.title}
@@ -37,7 +37,7 @@ export function TopicStage({
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.15, ease: "easeInOut" }}
+        transition={{ duration: 0.2, delay: 0.15, ease: "easeInOut" }}
         className="mt-4 max-w-xl text-center text-base text-muted-foreground sm:text-lg"
       >
         {topic.short}
@@ -50,8 +50,8 @@ export function TopicStage({
         initial={{ opacity: 0, scale: 0.97, filter: "blur(8px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         whileHover={{ scale: 1.03 }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
-        className="surface gradient-border card-lift mt-10 w-full max-w-2xl overflow-hidden rounded-[28px]"
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+        className="surface gradient-border card-lift mt-10 w-full max-w-2xl overflow-hidden rounded-xl"
       >
         <img
           src={topic.image}
@@ -73,7 +73,7 @@ export function TopicStage({
             initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: -16, filter: "blur(8px)" }}
-            transition={{ duration: 0.55, ease: "easeInOut" }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
             className="mt-8 w-full max-w-2xl"
           >
             <ContentSlider topic={topic} />

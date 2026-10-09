@@ -13,7 +13,7 @@ export function ContentSlider({ topic }: { topic: Topic }) {
     setPage((p) => (p + dir + labels.length) % labels.length);
 
   return (
-    <div className="glass gradient-border rounded-[28px] p-6 shadow-lift sm:p-9">
+    <div className="glass gradient-border rounded-xl p-6 shadow-lift sm:p-9">
       <div className="flex items-center justify-between gap-4">
         <button
           type="button"
@@ -43,7 +43,7 @@ export function ContentSlider({ topic }: { topic: Topic }) {
             initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: -12, filter: "blur(6px)" }}
-            transition={{ duration: 0.45, ease: "easeInOut" }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
             aria-live="polite"
           >
             <Tag tone="gradient">{labels[page]}</Tag>
@@ -101,7 +101,7 @@ export function ContentSlider({ topic }: { topic: Topic }) {
             onClick={() => setPage(i)}
             aria-label={`Ir para ${l}`}
             aria-current={i === page}
-            className={`h-2 rounded-full transition-all duration-300 ease-in-out ${
+            className={`h-2 rounded-full transition-all duration-200 ease-in-out ${
               i === page ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground"
             }`}
           />

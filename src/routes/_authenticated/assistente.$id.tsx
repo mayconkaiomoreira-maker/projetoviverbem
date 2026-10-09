@@ -4,6 +4,8 @@ import { ChatApp } from "@/components/vb/ChatApp";
 export const Route = createFileRoute("/_authenticated/assistente/$id")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Conversa — Assistente Viver Bem" },
       {
         name: "description",

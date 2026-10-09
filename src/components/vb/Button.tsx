@@ -13,17 +13,17 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-[image:var(--gradient-primary)] text-primary-foreground glow hover:brightness-[1.06]",
+    "bg-primary text-primary-foreground hover:bg-primary-hover",
   ghost: "text-muted-foreground hover:text-foreground hover:bg-muted",
   outline:
-    "gradient-border glass text-foreground hover:text-primary hover:shadow-soft",
-  glass: "glass text-foreground shadow-soft hover:shadow-lift",
+    "bg-secondary text-secondary-foreground hover:bg-accent/70",
+  glass: "border border-border bg-card text-foreground hover:bg-muted",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "h-10 px-4 text-sm",
-  md: "h-12 px-6 text-[15px]",
-  lg: "h-14 px-8 text-base",
+  sm: "h-9 px-4 text-sm",
+  md: "h-11 px-5 text-sm",
+  lg: "h-12 px-6 text-base",
 };
 
 export function Button({
@@ -36,9 +36,9 @@ export function Button({
   return (
     <button
       className={cn(
-        "tap relative isolate inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-full font-medium disabled:pointer-events-none disabled:opacity-50",
+        "tap relative isolate inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50",
         variants[variant],
-        variant === "primary" && !plain && "shimmer",
+        
         sizes[size],
         className,
       )}
