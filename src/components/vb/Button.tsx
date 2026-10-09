@@ -36,7 +36,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "tap relative isolate inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50",
+        "tap relative isolate inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-md font-medium disabled:pointer-events-none disabled:opacity-50",
         variants[variant],
         
         sizes[size],
