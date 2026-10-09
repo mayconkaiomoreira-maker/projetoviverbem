@@ -4,7 +4,10 @@ import type { Topic } from "@/data/topics";
 import { Button } from "./Button";
 import { ContentSlider } from "./ContentSlider";
 import { ProgressBar } from "./ProgressBar";
+import { TopicArtwork } from "./TopicArtwork";
 import { Tag } from "./Tag";
+
+const MotionButton = motion.create(Button);
 
 export function TopicStage({
   topic,
@@ -43,28 +46,21 @@ export function TopicStage({
         {topic.short}
       </motion.p>
 
-      <motion.button
+      <MotionButton variant="glass"
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         initial={{ opacity: 0, scale: 0.97, filter: "blur(8px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-        whileHover={{ scale: 1.03 }}
+        whileHover={{ scale: 1 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
-        className="surface gradient-border card-lift mt-10 w-full max-w-2xl overflow-hidden rounded-xl"
+        className="surface gradient-border card-lift mt-10 h-auto w-full max-w-2xl flex-col gap-0 overflow-hidden rounded-xl p-0"
       >
-        <img
-          src={topic.image}
-          alt={topic.alt}
-          loading="lazy"
-          width={1024}
-          height={1024}
-          className="h-[38vh] w-full object-cover sm:h-[45vh]"
-        />
+        <TopicArtwork index={index} className="max-h-[380px]" />
         <span className="block px-6 py-4 text-sm text-muted-foreground">
           {open ? "Toque para recolher" : "Toque na imagem para saber mais"}
         </span>
-      </motion.button>
+      </MotionButton>
 
       <AnimatePresence initial={false}>
         {open && (

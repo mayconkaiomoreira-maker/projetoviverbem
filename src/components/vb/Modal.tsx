@@ -1,3 +1,4 @@
+import { Button } from "./Button";
 import { useEffect, type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
@@ -46,14 +47,14 @@ export function Modal({
           >
             <div className="mb-3 flex items-center justify-between gap-4">
               <h2 className="min-w-0 truncate text-lg font-semibold">{title}</h2>
-              <button
+              <Button variant="ghost"
                 type="button"
                 onClick={onClose}
                 aria-label="Fechar"
                 className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-muted-foreground hover:text-foreground"
               >
                 <X size={18} />
-              </button>
+              </Button>
             </div>
             {children}
           </motion.div>

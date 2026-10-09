@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useNavigate } from "@tanstack/react-router";
 import { Loader2, Lock, Mail, User as UserIcon, X } from "lucide-react";
 import { Button } from "./Button";
+import studentMarks from "@/assets/student-marks.png";
 import { Tag } from "./Tag";
 import { Notice } from "./Notice";
 import { useAuth } from "@/hooks/useAuth";
@@ -34,7 +35,7 @@ function RotatingWord() {
           animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
           exit={{ opacity: 0, filter: "blur(10px)", y: -8 }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
-          className="inline-block font-semibold"
+          className="inline-block font-semibold underline decoration-marigold decoration-4 underline-offset-4"
         >
           {words[i]}
         </motion.span>
@@ -44,7 +45,7 @@ function RotatingWord() {
 }
 
 const field =
-  "h-12 w-full rounded-lg border border-border bg-background/70 pl-11 pr-4 text-[15px] outline-none transition-all duration-200 ease-in-out placeholder:text-muted-foreground focus:border-primary focus:ring-4 focus:ring-primary/15";
+  "h-12 w-full rounded-lg border border-border bg-card pl-11 pr-4 text-[15px] outline-none transition-all duration-200 ease-in-out placeholder:text-muted-foreground focus:border-primary focus:ring-4 focus:ring-primary/15";
 
 export function AuthModal() {
   const { open, mode, closeModal, setMode } = useAuthModal();
@@ -128,29 +129,30 @@ export function AuthModal() {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="glass gradient-border relative flex h-full max-h-full w-full flex-col overflow-hidden shadow-lift sm:h-auto sm:max-h-[88vh] sm:w-[75vw] sm:max-w-5xl sm:flex-row sm:rounded-xl"
           >
-            <button
+            <Button variant="ghost"
               type="button"
               onClick={closeModal}
               aria-label="Fechar"
               className="tap absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-card/70 text-muted-foreground hover:text-foreground"
             >
               <X size={18} />
-            </button>
+            </Button>
 
             {/* Lado esquerdo — 40% */}
-            <div className="relative hidden flex-col justify-center gap-4 bg-[image:var(--gradient-primary)] p-12 sm:flex sm:w-2/5">
-              <Tag className="self-start border-primary-foreground/25 text-primary-foreground">Projeto Viver Bem</Tag>
-              <p className="text-3xl font-semibold leading-tight tracking-tight text-primary-foreground">
+            <div className="relative hidden flex-col justify-center gap-4 bg-peach p-12 sm:flex sm:w-2/5">
+              <img src={studentMarks} width={1536} height={512} alt="" className="mb-4 w-full" />
+              <Tag className="self-start border-border text-foreground">Projeto Viver Bem</Tag>
+              <p className="text-3xl font-semibold leading-tight tracking-tight text-foreground">
                 Cuidar da sua <RotatingWord /> pode transformar sua vida.
               </p>
-              <p className="text-[15px] text-primary-foreground/80">
+              <p className="text-[15px] text-foreground/80">
                 Estamos aqui para caminhar com você.
               </p>
             </div>
 
             {/* Lado direito — 60% */}
-            <div className="flex flex-1 items-center justify-center overflow-y-auto bg-muted/40 p-6 sm:w-3/5 sm:p-10">
-              <div className="gradient-border glass w-full max-w-md rounded-xl p-6 shadow-soft sm:p-8">
+            <div className="flex flex-1 items-center justify-center overflow-y-auto bg-card p-6 sm:w-3/5 sm:p-10">
+              <div className="w-full max-w-md py-6 sm:py-8">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.form
                     key={mode}

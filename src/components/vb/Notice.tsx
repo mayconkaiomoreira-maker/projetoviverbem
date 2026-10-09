@@ -39,7 +39,7 @@ export function Notice({
     <div
       role="note"
       className={cn(
-        "glass flex items-start gap-3 rounded-xl border px-5 py-4 shadow-soft",
+        "flex items-start gap-3 rounded-xl border bg-card px-5 py-4",
         ring,
         className,
       )}

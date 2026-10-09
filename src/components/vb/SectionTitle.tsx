@@ -23,7 +23,7 @@ export function SectionTitle({
       {eyebrow && (
         <Tag tone="gradient">{eyebrow}</Tag>
       )}
-      <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+      <h2 className="mt-4 text-3xl font-bold sm:text-5xl">
         {title}
       </h2>
       {description && (

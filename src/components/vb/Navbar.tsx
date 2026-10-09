@@ -29,13 +29,13 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background">
       <motion.nav
         aria-label="Navegação principal"
-        animate={{ scale: scrolled ? 0.985 : 1 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
-        className={`mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-full px-4 py-2.5 transition-shadow duration-200 ease-in-out sm:px-5 lg:flex lg:justify-between ${
-          scrolled ? "glass gradient-border shadow-soft" : "bg-transparent"
+        className={`mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 h-16 px-4 py-2.5 transition-shadow duration-200 ease-in-out sm:px-5 lg:flex lg:justify-between ${
+          scrolled ? "bg-background" : "bg-background"
         }`}
       >
         <a
@@ -54,7 +54,7 @@ export function Navbar() {
               <a
                 href={i.href}
                 onMouseEnter={() => setHovered(i.href)}
-                className="relative z-10 block rounded-full px-3.5 py-2 text-sm text-muted-foreground transition-colors duration-200 ease-in-out hover:text-foreground"
+                className="relative z-10 block rounded-lg px-3.5 py-2 text-sm text-muted-foreground transition-colors duration-200 ease-in-out hover:text-foreground"
               >
                 {i.label}
               </a>
@@ -62,7 +62,7 @@ export function Navbar() {
                 <motion.span
                   layoutId="nav-pill"
                   transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                  className="absolute inset-0 rounded-full bg-accent"
+                  className="absolute inset-0 rounded-lg bg-accent"
                   aria-hidden="true"
                 />
               )}
@@ -86,15 +86,15 @@ export function Navbar() {
               Entrar
             </Button>
           )}
-          <button
+          <Button variant="ghost"
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
-            className="tap glass grid h-11 w-11 place-items-center rounded-full text-foreground lg:hidden"
+            className="tap glass grid h-11 w-11 place-items-center rounded-lg text-foreground lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          </Button>
         </div>
       </motion.nav>
 

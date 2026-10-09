@@ -1,3 +1,4 @@
+import { Button } from "./Button";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -13,27 +14,27 @@ export function ContentSlider({ topic }: { topic: Topic }) {
     setPage((p) => (p + dir + labels.length) % labels.length);
 
   return (
-    <div className="glass gradient-border rounded-xl p-6 shadow-lift sm:p-9">
+    <div className="rounded-xl p-2 sm:p-4">
       <div className="flex items-center justify-between gap-4">
-        <button
+        <Button variant="ghost"
           type="button"
           onClick={() => go(-1)}
           aria-label="Conteúdo anterior"
           className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-muted-foreground hover:text-primary"
         >
           <ChevronLeft size={20} />
-        </button>
+        </Button>
         <p className="min-w-0 truncate text-center text-xs font-medium text-muted-foreground">
           {page + 1} / {labels.length}
         </p>
-        <button
+        <Button variant="ghost"
           type="button"
           onClick={() => go(1)}
           aria-label="Próximo conteúdo"
           className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-muted-foreground hover:text-primary"
         >
           <ChevronRight size={20} />
-        </button>
+        </Button>
       </div>
 
       <div className="mt-6 min-h-[15rem]">
@@ -81,7 +82,7 @@ export function ContentSlider({ topic }: { topic: Topic }) {
                   {topic.tips.map((t) => (
                     <li
                       key={t}
-                      className="gradient-border glass rounded-full px-4 py-2 text-sm text-accent-foreground"
+                      className="bg-accent rounded-full px-4 py-2 text-sm text-accent-foreground"
                     >
                       {t}
                     </li>
@@ -95,16 +96,16 @@ export function ContentSlider({ topic }: { topic: Topic }) {
 
       <div className="mt-6 flex justify-center gap-2">
         {labels.map((l, i) => (
-          <button
+          <Button variant="ghost"
             key={l}
             type="button"
             onClick={() => setPage(i)}
             aria-label={`Ir para ${l}`}
             aria-current={i === page}
-            className={`h-2 rounded-full transition-all duration-200 ease-in-out ${
-              i === page ? "w-6 bg-primary" : "w-2 bg-border hover:bg-muted-foreground"
+            className={`h-8 w-8 rounded-lg px-0 transition-all duration-200 ease-in-out ${
+              i === page ? "bg-accent text-primary" : "text-muted-foreground hover:bg-muted"
             }`}
-          />
+          >{i + 1}</Button>
         ))}
       </div>
     </div>
