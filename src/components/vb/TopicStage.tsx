@@ -30,8 +30,8 @@ export function TopicStage({
     <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-16 sm:py-20">
       <Tag tone="gradient">Tema {index + 1} de {total}</Tag>
       <motion.h1
-        initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         className="mt-5 text-center text-4xl font-semibold sm:text-6xl"
       >
@@ -50,8 +50,8 @@ export function TopicStage({
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        initial={{ opacity: 0, scale: 0.97, filter: "blur(8px)" }}
-        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        initial={{ opacity: 0, scale: 0.97 }}
+        animate={{ opacity: 1, scale: 1 }}
         whileHover={{ scale: 1 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         className="surface gradient-border card-lift mt-10 h-auto w-full max-w-2xl flex-col gap-0 overflow-hidden rounded-xl p-0"
@@ -66,9 +66,9 @@ export function TopicStage({
         {open && (
           <motion.div
             key="card"
-            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -16, filter: "blur(8px)" }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="mt-8 w-full max-w-2xl"
           >

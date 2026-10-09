@@ -238,7 +238,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
             type="button"
             onClick={() => setSidebar(false)}
             aria-label="Fechar menu"
-            className="tap grid h-10 w-10 place-items-center rounded-lg bg-muted lg:hidden"
+            className="tap grid h-10 w-10 px-0 place-items-center rounded-lg bg-muted lg:hidden"
           >
             <X size={17} />
           </Button>
@@ -283,7 +283,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
                 type="button"
                 aria-label={`Excluir ${c.title}`}
                 onClick={() => removeConversation(c.id)}
-                className="tap grid h-9 w-9 shrink-0 place-items-center rounded-lg text-muted-foreground opacity-0 hover:text-destructive focus-visible:opacity-100 group-hover:opacity-100"
+                className="tap grid h-9 w-9 px-0 shrink-0 place-items-center rounded-lg text-muted-foreground opacity-0 hover:text-destructive focus-visible:opacity-100 group-hover:opacity-100"
               >
                 <Trash2 size={15} />
               </Button>
@@ -296,7 +296,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
             to="/perfil"
             className="tap flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-muted"
           >
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary text-sm font-semibold text-primary-foreground">
+            <span className="grid h-9 w-9 px-0 shrink-0 place-items-center rounded-lg bg-primary text-sm font-semibold text-primary-foreground">
               {name.charAt(0).toUpperCase()}
             </span>
             <span className="min-w-0 flex-1 truncate text-sm">{name}</span>
@@ -322,7 +322,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
             type="button"
             onClick={() => setSidebar(true)}
             aria-label="Abrir conversas"
-            className="tap grid h-10 w-10 place-items-center rounded-lg bg-muted lg:hidden"
+            className="tap grid h-10 w-10 px-0 place-items-center rounded-lg bg-muted lg:hidden"
           >
             <MessageSquare size={17} />
           </Button>
@@ -340,8 +340,8 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
           <div className="mx-auto flex max-w-3xl flex-col gap-5">
             {empty && (
               <motion.div
-                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
                 className="pt-10 text-center"
               >
@@ -418,7 +418,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
               type="submit"
               disabled={!input.trim() || pending || streaming !== null}
               aria-label="Enviar mensagem"
-              className="tap grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground disabled:opacity-40"
+              className="tap grid h-11 w-11 px-0 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground disabled:opacity-40"
             >
               <ArrowUp size={18} />
             </Button>

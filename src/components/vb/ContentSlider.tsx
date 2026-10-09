@@ -20,7 +20,7 @@ export function ContentSlider({ topic }: { topic: Topic }) {
           type="button"
           onClick={() => go(-1)}
           aria-label="Conteúdo anterior"
-          className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-muted-foreground hover:text-primary"
+          className="tap grid h-11 w-11 px-0 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground hover:text-primary"
         >
           <ChevronLeft size={20} />
         </Button>
@@ -31,7 +31,7 @@ export function ContentSlider({ topic }: { topic: Topic }) {
           type="button"
           onClick={() => go(1)}
           aria-label="Próximo conteúdo"
-          className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-muted-foreground hover:text-primary"
+          className="tap grid h-11 w-11 px-0 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground hover:text-primary"
         >
           <ChevronRight size={20} />
         </Button>
@@ -41,9 +41,9 @@ export function ContentSlider({ topic }: { topic: Topic }) {
         <AnimatePresence mode="wait">
           <motion.div
             key={page}
-            initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -12, filter: "blur(6px)" }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
             aria-live="polite"
           >

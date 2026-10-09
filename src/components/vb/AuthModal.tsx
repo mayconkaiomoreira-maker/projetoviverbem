@@ -31,9 +31,9 @@ function RotatingWord() {
       <AnimatePresence mode="wait">
         <motion.span
           key={words[i]}
-          initial={{ opacity: 0, filter: "blur(10px)", y: 8 }}
-          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          exit={{ opacity: 0, filter: "blur(10px)", y: -8 }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
           className="inline-block font-semibold underline decoration-marigold decoration-4 underline-offset-4"
         >
@@ -133,7 +133,7 @@ export function AuthModal() {
               type="button"
               onClick={closeModal}
               aria-label="Fechar"
-              className="tap absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-card/70 text-muted-foreground hover:text-foreground"
+              className="tap absolute right-4 top-4 z-10 grid h-11 w-11 px-0 place-items-center rounded-lg bg-card/70 text-muted-foreground hover:text-foreground"
             >
               <X size={18} />
             </Button>

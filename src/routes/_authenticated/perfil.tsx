@@ -50,8 +50,8 @@ function Perfil() {
   return (
     <div className="min-h-dvh bg-background px-5 py-10">
       <motion.div
-        initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         className="mx-auto max-w-xl"
       >

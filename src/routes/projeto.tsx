@@ -99,8 +99,8 @@ function Landing() {
             {about.map((a, i) => (
               <motion.article
                 key={a.title}
-                initial={{ opacity: 0, y: 28, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.2, delay: i * 0.1, ease: "easeInOut" }}
                 className={`rounded-xl border border-border p-7 ${["bg-card", "bg-accent", "bg-peach"][i]}`}
@@ -156,8 +156,8 @@ function Landing() {
             {topics.map((t, i) => (
               <motion.article
                 key={t.slug}
-                initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.2, delay: (i % 3) * 0.1, ease: "easeInOut" }}
                 className="card-lift flex flex-col overflow-hidden rounded-xl border border-border bg-card"
@@ -186,8 +186,8 @@ function Landing() {
 
         <section id="assistente" className="mx-auto max-w-6xl px-5 pb-24 sm:pb-32">
           <motion.div
-            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="border-y border-border bg-marigold px-7 py-14 text-center sm:px-14"

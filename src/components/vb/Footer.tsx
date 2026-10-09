@@ -57,7 +57,7 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram do Projeto Viver Bem"
-              className="tap gradient-border glass grid h-11 w-11 place-items-center rounded-full text-muted-foreground hover:text-primary"
+              className="tap gradient-border glass grid h-11 w-11 px-0 place-items-center rounded-lg text-muted-foreground hover:text-primary"
             >
               <Instagram size={18} />
             </a>
@@ -66,14 +66,14 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label="YouTube do Projeto Viver Bem"
-              className="tap gradient-border glass grid h-11 w-11 place-items-center rounded-full text-muted-foreground hover:text-primary"
+              className="tap gradient-border glass grid h-11 w-11 px-0 place-items-center rounded-lg text-muted-foreground hover:text-primary"
             >
               <Youtube size={18} />
             </a>
             <a
               href="mailto:contato@projetoviverbem.org"
               aria-label="Enviar e-mail"
-              className="tap gradient-border glass grid h-11 w-11 place-items-center rounded-full text-muted-foreground hover:text-primary"
+              className="tap gradient-border glass grid h-11 w-11 px-0 place-items-center rounded-lg text-muted-foreground hover:text-primary"
             >
               <Mail size={18} />
             </a>

@@ -91,7 +91,7 @@ export function Navbar() {
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
-            className="tap glass grid h-11 w-11 place-items-center rounded-lg text-foreground lg:hidden"
+            className="tap glass grid h-11 w-11 px-0 place-items-center rounded-lg text-foreground lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </Button>
@@ -100,8 +100,8 @@ export function Navbar() {
 
       {open && (
         <motion.div
-          initial={{ opacity: 0, y: -8, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
           className="glass gradient-border mx-auto mt-2 max-w-6xl rounded-xl shadow-lift lg:hidden"
         >

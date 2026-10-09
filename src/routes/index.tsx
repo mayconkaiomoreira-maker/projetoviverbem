@@ -70,9 +70,9 @@ function Experiencia() {
         {step === 0 && (
           <motion.section
             key="welcome"
-            initial={{ opacity: 0, filter: "blur(10px)", scale: 0.98 }}
-            animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
-            exit={{ opacity: 0, filter: "blur(10px)", scale: 1.01 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.01 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="welcome-section flex flex-col items-center justify-center px-6 text-center"
           >
@@ -104,9 +104,9 @@ function Experiencia() {
         {step === 1 && (
           <motion.section
             key="intro"
-            initial={{ opacity: 0, filter: "blur(10px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, filter: "blur(10px)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="flex min-h-dvh flex-col items-center justify-center px-6"
           >
@@ -117,14 +117,14 @@ function Experiencia() {
               {introItems.map((item, i) => (
                 <motion.li
                   key={item}
-                  initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+                  initial={{ opacity: 0, y: 18 }}
                   animate={
                     i < visibleItems
-                      ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                      ? { opacity: 1, y: 0 }
                       : {}
                   }
                   transition={{ duration: 0.2, ease: "easeInOut" }}
-                  className="flex items-center gap-3 rounded-lg bg-card px-5 py-4 text-[15px] shadow-soft sm:text-base"
+                  className="flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-4 text-[15px] shadow-soft sm:text-base"
                 >
                   <span
                     aria-hidden="true"
@@ -158,9 +158,9 @@ function Experiencia() {
         {step >= 2 && topics[topicIndex] && (
           <motion.section
             key={topics[topicIndex].slug}
-            initial={{ opacity: 0, filter: "blur(10px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, filter: "blur(10px)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
             <TopicStage

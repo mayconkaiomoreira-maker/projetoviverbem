@@ -51,7 +51,7 @@ export function Modal({
                 type="button"
                 onClick={onClose}
                 aria-label="Fechar"
-                className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-muted-foreground hover:text-foreground"
+                className="tap grid h-11 w-11 px-0 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground hover:text-foreground"
               >
                 <X size={18} />
               </Button>
