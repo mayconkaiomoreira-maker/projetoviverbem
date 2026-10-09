@@ -2,7 +2,8 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { HeartPulse, Sparkles, Users } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
+import studentMarks from "@/assets/student-marks.png";
+import { TopicArtwork } from "@/components/vb/TopicArtwork";
 import { topics, type Topic } from "@/data/topics";
 import { Navbar } from "@/components/vb/Navbar";
 import { Footer } from "@/components/vb/Footer";
@@ -16,13 +17,15 @@ import { useAuthModal } from "@/hooks/useAuthModal";
 export const Route = createFileRoute("/projeto")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Projeto Viver Bem — Cuidar da mente é cuidar do futuro" },
       {
         name: "description",
         content:
           "Conheça o Projeto Viver Bem: missão, objetivos e conteúdos sobre saúde mental, autoestima e qualidade de vida para estudantes.",
       },
-      { property: "og:title", content: "Projeto Viver Bem" },
+      { property: "og:title", content: "Conheça o Projeto Viver Bem" },
       {
         property: "og:description",
         content:
@@ -70,48 +73,20 @@ function Landing() {
       <Navbar />
 
       <main id="inicio">
-        <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-28 lg:grid-cols-2 lg:gap-16 lg:pt-36">
-          <motion.div
-            initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
-          >
-            <p className="text-sm font-semibold tracking-wide text-primary">
-              Projeto Viver Bem
-            </p>
-            <h1 className="mt-4 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-              Cuidar da mente também é cuidar do futuro.
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              O Projeto Viver Bem busca conscientizar estudantes sobre saúde
-              mental, autoestima e qualidade de vida.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <a href="#temas">
-                <Button size="lg">Explorar conteúdos</Button>
-              </a>
-              <Link to="/" search={{ reset: 1 }}>
-                <Button size="lg" variant="outline">
-                  Rever a experiência
-                </Button>
-              </Link>
+        <section className="mx-auto flex max-w-6xl flex-col items-center px-5 pb-14 pt-28 text-center sm:pt-32">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="flex w-full flex-col items-center">
+            <img src={studentMarks} width={1536} height={512} alt="" className="character-row" />
+            <h1 className="display-title mt-4 max-w-4xl">Projeto <span className="hero-highlight">Viver Bem</span></h1>
+            <p className="mt-5 text-xl font-medium sm:text-2xl">Cuidar da mente também é cuidar do futuro.</p>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">O Projeto Viver Bem busca conscientizar estudantes sobre saúde mental, autoestima e qualidade de vida.</p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <a href="#temas"><Button>Explorar conteúdos</Button></a>
+              <Link to="/" search={{ reset: 1 }}><Button variant="outline">Rever a experiência</Button></Link>
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="overflow-hidden rounded-[28px] bg-card shadow-lift"
-          >
-            <img
-              src={heroImg}
-              alt="Grupo de estudantes sorrindo lado a lado"
-              width={1280}
-              height={960}
-              className="aspect-[4/3] w-full object-cover"
-            />
-          </motion.div>
+          <div className="mt-14 grid w-full max-w-4xl grid-cols-3 gap-3 sm:gap-5">
+            {[0, 2, 5].map((index) => <div key={index} className="overflow-hidden rounded-xl"><TopicArtwork index={index} className="aspect-[4/3]" /></div>)}
+          </div>
         </section>
 
         <section id="sobre" className="mx-auto max-w-6xl px-5 py-20 sm:py-28">
@@ -124,13 +99,13 @@ function Landing() {
             {about.map((a, i) => (
               <motion.article
                 key={a.title}
-                initial={{ opacity: 0, y: 28, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeInOut" }}
-                className="tap rounded-[28px] bg-card p-7 shadow-soft hover:shadow-lift"
+                transition={{ duration: 0.2, delay: i * 0.1, ease: "easeInOut" }}
+                className={`rounded-xl border border-border p-7 ${["bg-card", "bg-accent", "bg-peach"][i]}`}
               >
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-primary">
+                <span className="grid h-12 w-12 place-items-center rounded-lg bg-accent text-primary">
                   <a.icon size={22} aria-hidden="true" />
                 </span>
                 <h3 className="mt-5 text-xl font-semibold tracking-tight">
@@ -157,10 +132,10 @@ function Landing() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: "easeInOut" }}
-                className="flex items-start gap-4 rounded-3xl bg-card px-6 py-5 shadow-soft"
+                transition={{ duration: 0.2, delay: i * 0.05, ease: "easeInOut" }}
+                className="flex items-start gap-4 border-b border-border px-2 py-5"
               >
-                <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+                <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-peach text-xs font-semibold text-foreground">
                   {i + 1}
                 </span>
                 <span className="min-w-0 text-[15px] text-muted-foreground">
@@ -181,20 +156,13 @@ function Landing() {
             {topics.map((t, i) => (
               <motion.article
                 key={t.slug}
-                initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: (i % 3) * 0.1, ease: "easeInOut" }}
-                className="tap flex flex-col overflow-hidden rounded-[28px] bg-card shadow-soft hover:shadow-lift"
+                transition={{ duration: 0.2, delay: (i % 3) * 0.1, ease: "easeInOut" }}
+                className="card-lift flex flex-col overflow-hidden rounded-xl border border-border bg-card"
               >
-                <img
-                  src={t.image}
-                  alt={t.alt}
-                  loading="lazy"
-                  width={1024}
-                  height={1024}
-                  className="aspect-[4/3] w-full object-cover"
-                />
+                <TopicArtwork index={i} />
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-xl font-semibold tracking-tight">
                     {t.title}
@@ -218,19 +186,19 @@ function Landing() {
 
         <section id="assistente" className="mx-auto max-w-6xl px-5 pb-24 sm:pb-32">
           <motion.div
-            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="overflow-hidden rounded-[32px] bg-gradient-to-br from-primary via-primary-hover to-accent px-7 py-14 text-center shadow-lift sm:px-14"
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="border-y border-border bg-marigold px-7 py-14 text-center sm:px-14"
           >
-            <span className="mx-auto grid h-14 w-14 place-items-center rounded-3xl bg-primary-foreground/20 text-primary-foreground">
+            <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-card/50 text-foreground">
               <Sparkles size={24} aria-hidden="true" />
             </span>
-            <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-primary-foreground sm:text-4xl">
+            <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl">
               Converse com o Assistente IA do Viver Bem
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-primary-foreground/85 sm:text-base">
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/75 sm:text-base">
               Tire dúvidas sobre ansiedade, autoestima, rotina e bem-estar em um
               espaço acolhedor. Crie sua conta gratuita para começar.
             </p>
@@ -245,7 +213,7 @@ function Landing() {
                 <>
                   <Button
                     size="lg"
-                    variant="outline"
+                    variant="primary"
                     onClick={() => openModal("signup")}
                   >
                     Criar conta gratuita
@@ -253,7 +221,7 @@ function Landing() {
                   <Button
                     size="lg"
                     variant="ghost"
-                    className="text-primary-foreground hover:bg-primary-foreground/15 hover:text-primary-foreground"
+                    className="text-foreground hover:bg-card/30 hover:text-foreground"
                     onClick={() => openModal("login")}
                   >
                     Já tenho conta

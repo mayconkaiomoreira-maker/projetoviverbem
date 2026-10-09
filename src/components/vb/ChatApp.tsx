@@ -15,6 +15,8 @@ import {
   X,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import studentMarks from "@/assets/student-marks.png";
+import { Button } from "./Button";
 import { useAuth } from "@/hooks/useAuth";
 
 type Conversation = { id: string; title: string; updated_at: string };
@@ -214,7 +216,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
       <AnimatePresence>
         {sidebar && (
           <motion.div
-            className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-foreground/20  lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -224,7 +226,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
       </AnimatePresence>
 
       <aside
-        className={`glass fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-border transition-transform duration-500 ease-in-out lg:static lg:translate-x-0 ${
+        className={`bg-background fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-border transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${
           sidebar ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -232,24 +234,24 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
           <Link to="/projeto" className="text-[15px] font-semibold tracking-tight">
             Viver Bem
           </Link>
-          <button
+          <Button variant="ghost"
             type="button"
             onClick={() => setSidebar(false)}
             aria-label="Fechar menu"
-            className="tap grid h-10 w-10 place-items-center rounded-full bg-muted lg:hidden"
+            className="tap grid h-10 w-10 px-0 place-items-center rounded-lg bg-muted lg:hidden"
           >
             <X size={17} />
-          </button>
+          </Button>
         </div>
 
         <div className="px-4">
-          <button
+          <Button variant="primary"
             type="button"
             onClick={newConversation}
-            className="tap flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary text-[15px] font-medium text-primary-foreground shadow-soft hover:bg-primary-hover"
+            className="tap flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary text-[15px] font-medium text-primary-foreground shadow-soft hover:bg-primary-hover"
           >
             <Plus size={17} /> Nova conversa
-          </button>
+          </Button>
         </div>
 
         <nav className="mt-5 flex-1 space-y-1 overflow-y-auto px-3 pb-4">
@@ -264,7 +266,7 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
           {conversations.map((c) => (
             <div
               key={c.id}
-              className={`group flex items-center gap-1 rounded-2xl pr-1 transition-colors duration-300 ease-in-out ${
+              className={`group flex items-center gap-1 rounded-lg pr-1 transition-colors duration-200 ease-in-out ${
                 c.id === conversationId ? "bg-accent" : "hover:bg-muted"
               }`}
             >
@@ -277,14 +279,14 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
                 <MessageSquare size={15} className="shrink-0 text-muted-foreground" />
                 <span className="min-w-0 truncate">{c.title}</span>
               </Link>
-              <button
+              <Button variant="ghost"
                 type="button"
                 aria-label={`Excluir ${c.title}`}
                 onClick={() => removeConversation(c.id)}
-                className="tap grid h-9 w-9 shrink-0 place-items-center rounded-full text-muted-foreground opacity-0 hover:text-destructive focus-visible:opacity-100 group-hover:opacity-100"
+                className="tap grid h-9 w-9 px-0 shrink-0 place-items-center rounded-lg text-muted-foreground opacity-0 hover:text-destructive focus-visible:opacity-100 group-hover:opacity-100"
               >
                 <Trash2 size={15} />
-              </button>
+              </Button>
             </div>
           ))}
         </nav>
@@ -292,38 +294,38 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
         <div className="border-t border-border p-3">
           <Link
             to="/perfil"
-            className="tap flex items-center gap-3 rounded-2xl px-3 py-3 hover:bg-muted"
+            className="tap flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-muted"
           >
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
+            <span className="grid h-9 w-9 px-0 shrink-0 place-items-center rounded-lg bg-primary text-sm font-semibold text-primary-foreground">
               {name.charAt(0).toUpperCase()}
             </span>
             <span className="min-w-0 flex-1 truncate text-sm">{name}</span>
             <UserIcon size={15} className="text-muted-foreground" />
           </Link>
-          <button
+          <Button variant="ghost"
             type="button"
             onClick={async () => {
               await signOut();
               void navigate({ to: "/projeto" });
             }}
-            className="tap mt-1 flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+            className="tap mt-1 flex w-full items-center gap-3 rounded-lg px-3 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
           >
             <LogOut size={15} /> Sair
-          </button>
+          </Button>
         </div>
       </aside>
 
       {/* Chat */}
       <main className="flex min-w-0 flex-1 flex-col">
-        <header className="glass flex items-center gap-3 border-b border-border px-4 py-3 lg:px-8">
-          <button
+        <header className="bg-card flex items-center gap-3 border-b border-border px-4 py-3 lg:px-8">
+          <Button variant="ghost"
             type="button"
             onClick={() => setSidebar(true)}
             aria-label="Abrir conversas"
-            className="tap grid h-10 w-10 place-items-center rounded-full bg-muted lg:hidden"
+            className="tap grid h-10 w-10 px-0 place-items-center rounded-lg bg-muted lg:hidden"
           >
             <MessageSquare size={17} />
-          </button>
+          </Button>
           <div className="min-w-0">
             <p className="truncate text-[15px] font-semibold tracking-tight">
               Assistente Viver Bem
@@ -338,14 +340,12 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
           <div className="mx-auto flex max-w-3xl flex-col gap-5">
             {empty && (
               <motion.div
-                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
                 className="pt-10 text-center"
               >
-                <span className="mx-auto grid h-14 w-14 place-items-center rounded-3xl bg-accent text-primary">
-                  <Sparkles size={24} />
-                </span>
+                <img src={studentMarks} width={1536} height={512} alt="" className="character-row mx-auto" />
                 <h1 className="mt-6 text-3xl font-semibold tracking-tight">
                   Olá, {name.split(" ")[0]} 👋
                 </h1>
@@ -355,14 +355,14 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
                 </p>
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
                   {suggestions.map((s) => (
-                    <button
+                    <Button variant="ghost"
                       key={s}
                       type="button"
                       onClick={() => send(s)}
-                      className="tap rounded-3xl bg-card px-5 py-4 text-left text-[15px] shadow-soft hover:shadow-lift"
+                      className="tap h-auto min-h-20 whitespace-normal rounded-xl border border-border bg-card px-5 py-4 text-left text-[15px] justify-start hover:bg-accent"
                     >
                       {s}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </motion.div>
@@ -375,14 +375,14 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
             {streaming !== null && <Bubble role="assistant" content={streaming} />}
 
             {pending && (
-              <div className="flex items-center gap-2 rounded-3xl bg-card px-5 py-4 text-muted-foreground shadow-soft self-start">
+              <div className="flex items-center gap-2 rounded-xl bg-card px-5 py-4 text-muted-foreground shadow-soft self-start">
                 <Loader2 size={16} className="animate-spin" />
                 <span className="text-sm">Pensando...</span>
               </div>
             )}
 
             {error && (
-              <p className="self-center rounded-2xl bg-destructive/10 px-4 py-3 text-sm text-destructive">
+              <p className="self-center rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">
                 {error}
               </p>
             )}
@@ -391,13 +391,13 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
           </div>
         </div>
 
-        <div className="border-t border-border bg-background/80 px-4 py-4 backdrop-blur-xl lg:px-8">
+        <div className="border-t border-border bg-background px-4 py-4  lg:px-8">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               void send(input);
             }}
-            className="mx-auto flex max-w-3xl items-end gap-2 rounded-[28px] bg-card p-2 shadow-soft"
+            className="mx-auto flex max-w-3xl items-end gap-2 rounded-xl border border-border bg-card p-2"
           >
             <textarea
               ref={inputRef}
@@ -414,14 +414,14 @@ export function ChatApp({ conversationId }: { conversationId: string }) {
               placeholder="Escreva sua mensagem..."
               className="max-h-40 min-h-[44px] flex-1 resize-none bg-transparent px-4 py-3 text-[15px] outline-none placeholder:text-muted-foreground"
             />
-            <button
+            <Button variant="primary"
               type="submit"
               disabled={!input.trim() || pending || streaming !== null}
               aria-label="Enviar mensagem"
-              className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground disabled:opacity-40"
+              className="tap grid h-11 w-11 px-0 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground disabled:opacity-40"
             >
               <ArrowUp size={18} />
-            </button>
+            </Button>
           </form>
           <p className="mx-auto mt-3 max-w-3xl text-center text-xs text-muted-foreground">
             Em caso de crise, ligue para o CVV — 188 (gratuito, 24h).
@@ -438,10 +438,10 @@ function Bubble({ role, content }: { role: "user" | "assistant"; content: string
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      className={`max-w-[85%] rounded-[26px] px-5 py-4 text-[15px] leading-relaxed shadow-soft ${
+      transition={{ duration: 0.2, ease: "easeInOut" }}
+      className={`max-w-[85%] rounded-xl px-5 py-4 text-[15px] leading-relaxed shadow-soft ${
         isUser
-          ? "self-end bg-primary text-primary-foreground"
+          ? "self-end bg-accent text-foreground"
           : "self-start bg-card text-foreground"
       }`}
     >

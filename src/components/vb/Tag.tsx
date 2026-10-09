@@ -5,11 +5,11 @@ type Tone = "default" | "primary" | "gradient";
 
 const tones: Record<Tone, string> = {
   default:
-    "glass text-muted-foreground",
+    "bg-muted text-muted-foreground",
   primary:
     "bg-accent text-primary border border-primary/20",
   gradient:
-    "gradient-border glass text-foreground",
+    "bg-peach text-foreground",
 };
 
 export function Tag({

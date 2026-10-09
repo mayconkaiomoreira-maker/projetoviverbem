@@ -1,3 +1,4 @@
+import { Button } from "./Button";
 import { useEffect, type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
@@ -27,10 +28,10 @@ export function Modal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
         >
           <div
-            className="absolute inset-0 bg-foreground/20 backdrop-blur-sm"
+            className="absolute inset-0 bg-foreground/20 "
             onClick={onClose}
             aria-hidden="true"
           />
@@ -41,19 +42,19 @@ export function Modal({
             initial={{ opacity: 0, y: 40, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.98 }}
-            transition={{ duration: 0.45, ease: "easeInOut" }}
-            className="glass gradient-border relative max-h-[88vh] w-full max-w-xl overflow-y-auto rounded-t-[28px] p-4 shadow-lift sm:rounded-[28px] sm:p-5"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="glass gradient-border relative max-h-[88vh] w-full max-w-xl overflow-y-auto rounded-xl p-4 shadow-lift sm:rounded-xl sm:p-5"
           >
             <div className="mb-3 flex items-center justify-between gap-4">
               <h2 className="min-w-0 truncate text-lg font-semibold">{title}</h2>
-              <button
+              <Button variant="ghost"
                 type="button"
                 onClick={onClose}
                 aria-label="Fechar"
-                className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-muted-foreground hover:text-foreground"
+                className="tap grid h-11 w-11 px-0 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground hover:text-foreground"
               >
                 <X size={18} />
-              </button>
+              </Button>
             </div>
             {children}
           </motion.div>

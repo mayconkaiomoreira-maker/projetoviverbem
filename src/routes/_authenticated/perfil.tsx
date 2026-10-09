@@ -9,6 +9,8 @@ import { Button } from "@/components/vb/Button";
 export const Route = createFileRoute("/_authenticated/perfil")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Meu perfil — Projeto Viver Bem" },
       {
         name: "description",
@@ -48,9 +50,9 @@ function Perfil() {
   return (
     <div className="min-h-dvh bg-background px-5 py-10">
       <motion.div
-        initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
         className="mx-auto max-w-xl"
       >
         <Link
@@ -60,7 +62,7 @@ function Perfil() {
           <ArrowLeft size={16} /> Voltar ao assistente
         </Link>
 
-        <div className="mt-6 rounded-[28px] bg-card p-7 shadow-soft">
+        <div className="mt-6 rounded-xl bg-card p-7 shadow-soft">
           <div className="flex items-center gap-4">
             <span className="grid h-14 w-14 place-items-center rounded-full bg-primary text-lg font-semibold text-primary-foreground">
               {(profile?.full_name || user?.email || "?").charAt(0).toUpperCase()}
@@ -80,7 +82,7 @@ function Perfil() {
             id="nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-2 h-12 w-full rounded-2xl border border-border bg-background px-4 text-[15px] outline-none transition-all duration-300 ease-in-out focus:border-primary focus:ring-4 focus:ring-primary/15"
+            className="mt-2 h-12 w-full rounded-lg border border-border bg-background px-4 text-[15px] outline-none transition-all duration-200 ease-in-out focus:border-primary focus:ring-4 focus:ring-primary/15"
           />
 
           <div className="mt-6 flex flex-wrap gap-3">

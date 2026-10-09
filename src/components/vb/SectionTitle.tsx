@@ -14,16 +14,16 @@ export function SectionTitle({
 }) {
   return (
     <motion.header
-      initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.7, ease: "easeInOut" }}
+      transition={{ duration: 0.2, ease: "easeInOut" }}
       className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}
     >
       {eyebrow && (
         <Tag tone="gradient">{eyebrow}</Tag>
       )}
-      <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+      <h2 className="mt-4 text-3xl font-bold sm:text-5xl">
         {title}
       </h2>
       {description && (

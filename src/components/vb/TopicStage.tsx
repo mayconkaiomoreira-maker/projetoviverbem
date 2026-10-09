@@ -4,7 +4,10 @@ import type { Topic } from "@/data/topics";
 import { Button } from "./Button";
 import { ContentSlider } from "./ContentSlider";
 import { ProgressBar } from "./ProgressBar";
+import { TopicArtwork } from "./TopicArtwork";
 import { Tag } from "./Tag";
+
+const MotionButton = motion.create(Button);
 
 export function TopicStage({
   topic,
@@ -27,9 +30,9 @@ export function TopicStage({
     <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-16 sm:py-20">
       <Tag tone="gradient">Tema {index + 1} de {total}</Tag>
       <motion.h1
-        initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
         className="mt-5 text-center text-4xl font-semibold sm:text-6xl"
       >
         {topic.title}
@@ -37,43 +40,36 @@ export function TopicStage({
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.15, ease: "easeInOut" }}
+        transition={{ duration: 0.2, delay: 0.15, ease: "easeInOut" }}
         className="mt-4 max-w-xl text-center text-base text-muted-foreground sm:text-lg"
       >
         {topic.short}
       </motion.p>
 
-      <motion.button
+      <MotionButton variant="glass"
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        initial={{ opacity: 0, scale: 0.97, filter: "blur(8px)" }}
-        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-        whileHover={{ scale: 1.03 }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
-        className="surface gradient-border card-lift mt-10 w-full max-w-2xl overflow-hidden rounded-[28px]"
+        initial={{ opacity: 0, scale: 0.97 }}
+        animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1 }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+        className="surface gradient-border card-lift mt-10 h-auto w-full max-w-2xl flex-col gap-0 overflow-hidden rounded-xl p-0"
       >
-        <img
-          src={topic.image}
-          alt={topic.alt}
-          loading="lazy"
-          width={1024}
-          height={1024}
-          className="h-[38vh] w-full object-cover sm:h-[45vh]"
-        />
+        <TopicArtwork index={index} className="max-h-[380px]" />
         <span className="block px-6 py-4 text-sm text-muted-foreground">
           {open ? "Toque para recolher" : "Toque na imagem para saber mais"}
         </span>
-      </motion.button>
+      </MotionButton>
 
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
             key="card"
-            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -16, filter: "blur(8px)" }}
-            transition={{ duration: 0.55, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
             className="mt-8 w-full max-w-2xl"
           >
             <ContentSlider topic={topic} />
