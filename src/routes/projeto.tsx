@@ -25,7 +25,7 @@ export const Route = createFileRoute("/projeto")({
         content:
           "Conheça o Projeto Viver Bem: missão, objetivos e conteúdos sobre saúde mental, autoestima e qualidade de vida para estudantes.",
       },
-      { property: "og:title", content: "Projeto Viver Bem" },
+      { property: "og:title", content: "Conheça o Projeto Viver Bem" },
       {
         property: "og:description",
         content:
@@ -85,7 +85,7 @@ function Landing() {
             </div>
           </motion.div>
           <div className="mt-14 grid w-full max-w-4xl grid-cols-3 gap-3 sm:gap-5">
-            {[0, 2, 5].map((index) => <div key={index} className="overflow-hidden rounded-xl"><TopicArtwork index={index} className="aspect-[5/3]" /></div>)}
+            {[0, 2, 5].map((index) => <div key={index} className="overflow-hidden rounded-xl"><TopicArtwork index={index} className="aspect-[4/3]" /></div>)}
           </div>
         </section>
 
