@@ -73,9 +73,9 @@ export function Navbar() {
 
         <div className="flex shrink-0 items-center gap-2">
           {isAuthenticated ? (
-            <Link to="/assistente" className="hidden lg:block">
+            <Link to="/perfil" className="hidden lg:block">
               <Button size="sm">
-                <Sparkles size={15} /> Assistente IA
+                Meu perfil
               </Button>
             </Link>
           ) : (
