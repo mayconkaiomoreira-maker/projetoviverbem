@@ -71,7 +71,27 @@ export function Gallery() {
 
   return (
     <>
-      <div className="mt-12 columns-2 gap-4 lg:columns-3">
+      <motion.figure
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+        className="mx-auto mt-12 max-w-sm overflow-hidden rounded-xl border border-border bg-card card-lift"
+      >
+        <video
+          src={atividadeVideo.url}
+          controls
+          playsInline
+          preload="metadata"
+          className="w-full"
+          aria-label="Vídeo da atividade do projeto na sala de aula"
+        />
+        <figcaption className="block px-4 py-3 text-sm text-muted-foreground">
+          Registro em vídeo da dinâmica na sala de aula
+        </figcaption>
+      </motion.figure>
+
+      <div className="mt-4 columns-2 gap-4 lg:columns-3">
         {photos.map((p, i) => (
           <motion.button
             key={p.src}
