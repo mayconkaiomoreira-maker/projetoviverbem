@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Menu, Sparkles, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "./Button";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthModal } from "@/hooks/useAuthModal";
@@ -73,9 +73,9 @@ export function Navbar() {
 
         <div className="flex shrink-0 items-center gap-2">
           {isAuthenticated ? (
-            <Link to="/assistente" className="hidden lg:block">
+            <Link to="/perfil" className="hidden lg:block">
               <Button size="sm">
-                <Sparkles size={15} /> Assistente IA
+                Meu perfil
               </Button>
             </Link>
           ) : (
@@ -120,9 +120,9 @@ export function Navbar() {
             ))}
             <li className="pt-2">
               {isAuthenticated ? (
-                <Link to="/assistente" onClick={() => setOpen(false)}>
+                <Link to="/perfil" onClick={() => setOpen(false)}>
                   <Button size="sm" className="w-full">
-                    <Sparkles size={15} /> Assistente IA
+                    Meu perfil
                   </Button>
                 </Link>
               ) : (

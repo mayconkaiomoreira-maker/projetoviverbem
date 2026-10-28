@@ -12,8 +12,6 @@ import { SectionTitle } from "@/components/vb/SectionTitle";
 import { Modal } from "@/components/vb/Modal";
 import { ContentSlider } from "@/components/vb/ContentSlider";
 import { Gallery } from "@/components/vb/Gallery";
-import { useAuth } from "@/hooks/useAuth";
-import { useAuthModal } from "@/hooks/useAuthModal";
 
 export const Route = createFileRoute("/projeto")({
   head: () => ({
@@ -66,8 +64,6 @@ const goals = [
 
 function Landing() {
   const [selected, setSelected] = useState<Topic | null>(null);
-  const { isAuthenticated } = useAuth();
-  const { openModal } = useAuthModal();
 
   return (
     <div className="min-h-dvh">
@@ -192,54 +188,6 @@ function Landing() {
             description="Registros das atividades, rodas de conversa e dinâmicas realizadas com a turma."
           />
           <Gallery />
-        </section>
-
-        <section id="assistente" className="mx-auto max-w-6xl px-5 pb-24 sm:pb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="border-y border-border bg-marigold px-7 py-14 text-center sm:px-14"
-          >
-            <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-card/50 text-foreground">
-              <Sparkles size={24} aria-hidden="true" />
-            </span>
-            <h2 className="mx-auto mt-6 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl">
-              Converse com o Assistente IA do Viver Bem
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/75 sm:text-base">
-              Tire dúvidas sobre ansiedade, autoestima, rotina e bem-estar em um
-              espaço acolhedor. Crie sua conta gratuita para começar.
-            </p>
-            <div className="mt-9 flex flex-wrap justify-center gap-3">
-              {isAuthenticated ? (
-                <Link to="/assistente">
-                  <Button size="lg" variant="outline">
-                    Abrir assistente
-                  </Button>
-                </Link>
-              ) : (
-                <>
-                  <Button
-                    size="lg"
-                    variant="primary"
-                    onClick={() => openModal("signup")}
-                  >
-                    Criar conta gratuita
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="ghost"
-                    className="text-foreground hover:bg-card/30 hover:text-foreground"
-                    onClick={() => openModal("login")}
-                  >
-                    Já tenho conta
-                  </Button>
-                </>
-              )}
-            </div>
-          </motion.div>
         </section>
       </main>
 
