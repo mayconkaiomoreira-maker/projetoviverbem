@@ -12,8 +12,6 @@ import { SectionTitle } from "@/components/vb/SectionTitle";
 import { Modal } from "@/components/vb/Modal";
 import { ContentSlider } from "@/components/vb/ContentSlider";
 import { Gallery } from "@/components/vb/Gallery";
-import { useAuth } from "@/hooks/useAuth";
-import { useAuthModal } from "@/hooks/useAuthModal";
 
 export const Route = createFileRoute("/projeto")({
   head: () => ({
