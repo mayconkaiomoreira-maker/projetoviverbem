@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Menu, Sparkles, X } from "lucide-react";
-import { Button } from "./Button";
+import { Menu, X } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthModal } from "@/hooks/useAuthModal";
 
