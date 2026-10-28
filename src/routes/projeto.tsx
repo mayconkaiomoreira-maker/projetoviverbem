@@ -11,6 +11,7 @@ import { Button } from "@/components/vb/Button";
 import { SectionTitle } from "@/components/vb/SectionTitle";
 import { Modal } from "@/components/vb/Modal";
 import { ContentSlider } from "@/components/vb/ContentSlider";
+import { Gallery } from "@/components/vb/Gallery";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthModal } from "@/hooks/useAuthModal";
 
@@ -182,6 +183,15 @@ function Landing() {
               </motion.article>
             ))}
           </div>
+        </section>
+
+        <section id="galeria" className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
+          <SectionTitle
+            eyebrow="Na escola"
+            title="O projeto em ação"
+            description="Registros das atividades, rodas de conversa e dinâmicas realizadas com a turma."
+          />
+          <Gallery />
         </section>
 
         <section id="assistente" className="mx-auto max-w-6xl px-5 pb-24 sm:pb-32">
