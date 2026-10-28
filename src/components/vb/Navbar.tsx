@@ -120,9 +120,9 @@ export function Navbar() {
             ))}
             <li className="pt-2">
               {isAuthenticated ? (
-                <Link to="/assistente" onClick={() => setOpen(false)}>
+                <Link to="/perfil" onClick={() => setOpen(false)}>
                   <Button size="sm" className="w-full">
-                    <Sparkles size={15} /> Assistente IA
+                    Meu perfil
                   </Button>
                 </Link>
               ) : (
