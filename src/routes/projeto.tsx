@@ -185,6 +185,15 @@ function Landing() {
           </div>
         </section>
 
+        <section id="galeria" className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
+          <SectionTitle
+            eyebrow="Na escola"
+            title="O projeto em ação"
+            description="Registros das atividades, rodas de conversa e dinâmicas realizadas com a turma."
+          />
+          <Gallery />
+        </section>
+
         <section id="assistente" className="mx-auto max-w-6xl px-5 pb-24 sm:pb-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
