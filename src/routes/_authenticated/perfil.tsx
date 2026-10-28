@@ -56,10 +56,10 @@ function Perfil() {
         className="mx-auto max-w-xl"
       >
         <Link
-          to="/assistente"
+          to="/projeto"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
         >
-          <ArrowLeft size={16} /> Voltar ao assistente
+          <ArrowLeft size={16} /> Voltar ao projeto
         </Link>
 
         <div className="mt-6 rounded-xl bg-card p-7 shadow-soft">

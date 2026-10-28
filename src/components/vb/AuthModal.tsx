@@ -93,7 +93,7 @@ export function AuthModal() {
       else await signIn(email, password);
       await new Promise((r) => setTimeout(r, 700));
       closeModal();
-      void navigate({ to: "/assistente" });
+      void navigate({ to: "/perfil" });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Algo deu errado.");
     } finally {
@@ -170,7 +170,7 @@ export function AuthModal() {
                       <p className="mt-1 text-sm text-muted-foreground">
                         {isSignup
                           ? "Leva menos de um minuto."
-                          : "Acesse o Assistente IA do projeto."}
+                          : "Acesse a sua conta do projeto."}
                       </p>
                     </div>
 
