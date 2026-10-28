@@ -94,9 +94,9 @@ export function Gallery() {
       <Modal
         open={open !== null}
         onClose={() => setOpen(null)}
-        title={open !== null ? photos[open].caption : ""}
+        title={open !== null ? photos[open]?.caption ?? "" : ""}
       >
-        {open !== null && (
+        {open !== null && photos[open] && (
           <img
             src={photos[open].src}
             alt={photos[open].alt}
