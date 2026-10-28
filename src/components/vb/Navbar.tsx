@@ -11,6 +11,7 @@ const items = [
   { label: "Sobre", href: "#sobre" },
   { label: "Objetivos", href: "#objetivos" },
   { label: "Temas", href: "#temas" },
+  { label: "Galeria", href: "#galeria" },
   { label: "Contato", href: "#contato" },
 ];
 
