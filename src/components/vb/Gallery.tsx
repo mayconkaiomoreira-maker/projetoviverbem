@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Modal } from "./Modal";
+import atividadeVideo from "@/assets/atividade-video.mov.asset.json";
 import atividade01 from "@/assets/atividade-01.jpg.asset.json";
 import atividade02 from "@/assets/atividade-02.jpg.asset.json";
 import atividade03 from "@/assets/atividade-03.jpg.asset.json";
