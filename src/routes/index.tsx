@@ -3,7 +3,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { topics } from "@/data/topics";
 import { Button } from "@/components/vb/Button";
-import studentMarks from "@/assets/student-marks.png";
+import studentMarks from "@/assets/student-marks.webp";
 import { ArrowRight, Heart, BookOpen, MessageCircle } from "lucide-react";
 import { TopicStage } from "@/components/vb/TopicStage";
 
@@ -76,7 +76,7 @@ function Experiencia() {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="welcome-section flex flex-col items-center justify-center px-6 text-center"
           >
-            <img src={studentMarks} width={1536} height={512} alt="" className="character-row" />
+            <img src={studentMarks} width={880} height={293} alt="" fetchPriority="high" decoding="async" className="character-row" />
             <h1 className="display-title mt-5 max-w-4xl">
               Projeto <span className="hero-highlight">Viver Bem</span>
             </h1>

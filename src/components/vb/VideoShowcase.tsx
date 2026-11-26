@@ -1,14 +1,22 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Play } from "lucide-react";
-import v1 from "@/assets/registro-01.mov.asset.json";
-import v2 from "@/assets/registro-02.mov.asset.json";
-import v3 from "@/assets/registro-03.mov.asset.json";
-import v4 from "@/assets/registro-04.mov.asset.json";
-import v5 from "@/assets/registro-05.mov.asset.json";
-import v6 from "@/assets/registro-06.mov.asset.json";
+import v1 from "@/assets/registro-01.mp4.asset.json";
+import v2 from "@/assets/registro-02.mp4.asset.json";
+import v3 from "@/assets/registro-03.mp4.asset.json";
+import v4 from "@/assets/registro-04.mp4.asset.json";
+import v5 from "@/assets/registro-05.mp4.asset.json";
+import v6 from "@/assets/registro-06.mp4.asset.json";
+import c1 from "@/assets/registro-01-capa.webp.asset.json";
+import c2 from "@/assets/registro-02-capa.webp.asset.json";
+import c3 from "@/assets/registro-03-capa.webp.asset.json";
+import c4 from "@/assets/registro-04-capa.webp.asset.json";
+import c5 from "@/assets/registro-05-capa.webp.asset.json";
+import c6 from "@/assets/registro-06-capa.webp.asset.json";
 
-const videos = [v1, v2, v3, v4, v5, v6].map((v, i) => ({ src: v.url, label: `Registro ${i + 1}` }));
+
+const covers = [c1, c2, c3, c4, c5, c6];
+const videos = [v1, v2, v3, v4, v5, v6].map((v, i) => ({ src: v.url, poster: covers[i]?.url, label: `Registro ${i + 1}` }));
 
 export function VideoShowcase() {
   const [active, setActive] = useState(0);
@@ -32,7 +40,8 @@ export function VideoShowcase() {
                 src={current.src}
                 controls
                 playsInline
-                preload="metadata"
+                preload="none"
+                poster={current.poster}
                 initial={{ opacity: 0, scale: 1.02 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
@@ -63,7 +72,7 @@ export function VideoShowcase() {
               className={`rounded-[16px] border p-1.5 transition-colors duration-200 ${on ? "border-primary bg-accent" : "border-border bg-card hover:border-primary"}`}
             >
               <div className="relative aspect-video overflow-hidden rounded-[10px] bg-midnight">
-                <video src={`${v.src}#t=1`} muted playsInline preload="metadata" className="pointer-events-none h-full w-full object-cover opacity-80" aria-hidden="true" />
+                <img src={v.poster} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover opacity-80" />
                 <span className="absolute inset-0 grid place-items-center">
                   <span className={`grid h-8 w-8 place-items-center rounded-full ${on ? "bg-primary text-primary-foreground" : "bg-card text-foreground"}`}>
                     <Play size={14} aria-hidden="true" />

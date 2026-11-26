@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useNavigate } from "@tanstack/react-router";
 import { Loader2, Lock, Mail, User as UserIcon, X } from "lucide-react";
 import { Button } from "./Button";
-import studentMarks from "@/assets/student-marks.png";
+import studentMarks from "@/assets/student-marks.webp";
 import { Tag } from "./Tag";
 import { Notice } from "./Notice";
 import { useAuth } from "@/hooks/useAuth";
@@ -140,7 +140,7 @@ export function AuthModal() {
 
             {/* Lado esquerdo — 40% */}
             <div className="relative hidden flex-col justify-center gap-4 bg-peach p-12 sm:flex sm:w-2/5">
-              <img src={studentMarks} width={1536} height={512} alt="" className="mb-4 w-full" />
+              <img src={studentMarks} width={880} height={293} alt="" loading="lazy" className="mb-4 w-full" />
               <Tag className="self-start border-border text-foreground">Projeto Viver Bem</Tag>
               <p className="text-3xl font-semibold leading-tight tracking-tight text-foreground">
                 Cuidar da sua <RotatingWord /> pode transformar sua vida.

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Modal } from "./Modal";
-import atividadeVideo from "@/assets/atividade-video.mov.asset.json";
+import atividadeVideo from "@/assets/atividade-video.mp4.asset.json";
+import atividadeVideoCapa from "@/assets/atividade-video-capa.webp.asset.json";
 import atividade01 from "@/assets/atividade-01.jpg.asset.json";
 import atividade02 from "@/assets/atividade-02.jpg.asset.json";
 import atividade03 from "@/assets/atividade-03.jpg.asset.json";
@@ -12,6 +13,18 @@ import atividade07 from "@/assets/atividade-07.jpg.asset.json";
 import atividade08 from "@/assets/atividade-08.jpg.asset.json";
 import atividade09 from "@/assets/atividade-09.jpg.asset.json";
 import atividade10 from "@/assets/atividade-10.jpg.asset.json";
+import mini01 from "@/assets/atividade-01-mini.webp.asset.json";
+import mini02 from "@/assets/atividade-02-mini.webp.asset.json";
+import mini03 from "@/assets/atividade-03-mini.webp.asset.json";
+import mini04 from "@/assets/atividade-04-mini.webp.asset.json";
+import mini05 from "@/assets/atividade-05-mini.webp.asset.json";
+import mini06 from "@/assets/atividade-06-mini.webp.asset.json";
+import mini07 from "@/assets/atividade-07-mini.webp.asset.json";
+import mini08 from "@/assets/atividade-08-mini.webp.asset.json";
+import mini09 from "@/assets/atividade-09-mini.webp.asset.json";
+import mini10 from "@/assets/atividade-10-mini.webp.asset.json";
+
+const minis = [mini01, mini02, mini03, mini04, mini05, mini06, mini07, mini08, mini09, mini10].map((m) => m.url);
 
 const photos = [
   {
@@ -82,7 +95,8 @@ export function Gallery() {
           src={atividadeVideo.url}
           controls
           playsInline
-          preload="metadata"
+          preload="none"
+          poster={atividadeVideoCapa.url}
           className="w-full"
           aria-label="Vídeo da atividade do projeto na sala de aula"
         />
@@ -104,7 +118,7 @@ export function Gallery() {
             aria-label={`Ampliar foto: ${p.caption}`}
             className="card-lift mb-4 block w-full break-inside-avoid overflow-hidden rounded-xl border border-border bg-card text-left"
           >
-            <img src={p.src} alt={p.alt} loading="lazy" className="w-full" />
+            <img src={minis[i] ?? p.src} alt={p.alt} loading="lazy" decoding="async" className="w-full" />
             <span className="block px-4 py-3 text-sm text-muted-foreground">
               {p.caption}
             </span>

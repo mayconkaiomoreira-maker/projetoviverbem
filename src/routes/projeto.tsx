@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { HeartPulse, Sparkles, Users } from "lucide-react";
-import studentMarks from "@/assets/student-marks.png";
+import studentMarks from "@/assets/student-marks.webp";
 import { TopicArtwork } from "@/components/vb/TopicArtwork";
 import { topics, type Topic } from "@/data/topics";
 import { Navbar } from "@/components/vb/Navbar";
@@ -73,7 +73,7 @@ function Landing() {
       <main id="inicio">
         <section className="mx-auto flex max-w-6xl flex-col items-center px-5 pb-14 pt-28 text-center sm:pt-32">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="flex w-full flex-col items-center">
-            <img src={studentMarks} width={1536} height={512} alt="" className="character-row" />
+            <img src={studentMarks} width={880} height={293} alt="" fetchPriority="high" decoding="async" className="character-row" />
             <h1 className="display-title mt-4 max-w-4xl">Projeto <span className="hero-highlight">Viver Bem</span></h1>
             <p className="mt-5 text-xl font-medium sm:text-2xl">Cuidar da mente também é cuidar do futuro.</p>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">O Projeto Viver Bem busca conscientizar estudantes sobre saúde mental, autoestima e qualidade de vida.</p>
