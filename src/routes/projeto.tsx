@@ -12,6 +12,7 @@ import { SectionTitle } from "@/components/vb/SectionTitle";
 import { Modal } from "@/components/vb/Modal";
 import { ContentSlider } from "@/components/vb/ContentSlider";
 import { Gallery } from "@/components/vb/Gallery";
+import { VideoShowcase } from "@/components/vb/VideoShowcase";
 
 export const Route = createFileRoute("/projeto")({
   head: () => ({
@@ -187,6 +188,7 @@ function Landing() {
             title="O projeto em ação"
             description="Registros das atividades, rodas de conversa e dinâmicas realizadas com a turma."
           />
+          <VideoShowcase />
           <Gallery />
         </section>
       </main>
